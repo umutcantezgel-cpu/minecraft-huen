@@ -28,30 +28,61 @@ const getDirtPattern = () => {
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 };
 
-export default function EntryLoader({ onComplete }) {
+export default function EntryLoader({ onComplete, onStart }) {
   const [loading, setLoading] = useState(false);
   const [percentage, setPercentage] = useState(0);
   const containerRef = useRef(null);
   const panoramaRef = useRef(null);
   const chunksRef = useRef([]);
 
-  // Create a 15x15 chunk grid (authentic Java edition look)
+  // Create a 15x15 chunk grid with procedural world generation
   const gridSize = 15;
-  const chunks = [];
   const center = Math.floor(gridSize / 2);
   
-  for (let y = 0; y < gridSize; y++) {
-    for (let x = 0; x < gridSize; x++) {
-      // Calculate Chebyshev distance (creates expanding square pattern)
-      const distance = Math.max(Math.abs(x - center), Math.abs(y - center));
-      chunks.push({ id: `${x}-${y}`, x, y, distance });
-    }
-  }
+  const chunks = React.useMemo(() => {
+    const list = [];
+    
+    // Random biome centers to ensure every load generates a unique world
+    const biomes = [
+      { cx: Math.random() * gridSize, cy: Math.random() * gridSize, color: '#1E90FF', radius: 4 + Math.random() * 3 }, // Water/Ocean
+      { cx: Math.random() * gridSize, cy: Math.random() * gridSize, color: '#EEDD82', radius: 3 + Math.random() * 2 }, // Sand/Desert
+      { cx: Math.random() * gridSize, cy: Math.random() * gridSize, color: '#808080', radius: 2 + Math.random() * 3 }, // Stone/Mountains
+      { cx: Math.random() * gridSize, cy: Math.random() * gridSize, color: '#FFFFFF', radius: 1 + Math.random() * 2 }, // Snow Peaks
+      { cx: Math.random() * gridSize, cy: Math.random() * gridSize, color: '#228B22', radius: 3 + Math.random() * 3 }, // Deep Forest
+    ];
 
-  // Sort chunks by distance from center
-  chunks.sort((a, b) => a.distance - b.distance);
+    for (let y = 0; y < gridSize; y++) {
+      for (let x = 0; x < gridSize; x++) {
+        // Calculate Chebyshev distance (creates expanding square pattern)
+        const distance = Math.max(Math.abs(x - center), Math.abs(y - center));
+        
+        let targetColor = '#71AF45'; // Default Minecraft Grass
+        
+        for (const b of biomes) {
+          const distToBiome = Math.sqrt(Math.pow(x - b.cx, 2) + Math.pow(y - b.cy, 2));
+          // add some natural jaggedness/noise
+          if (distToBiome + (Math.random() * 1.5) < b.radius) {
+            targetColor = b.color;
+            break;
+          }
+        }
+        
+        // Random isolated features for texture
+        if (targetColor === '#71AF45' && Math.random() > 0.8) targetColor = '#228B22'; // Random trees in grass
+        if (targetColor === '#EEDD82' && Math.random() > 0.9) targetColor = '#71AF45'; // Random oasis in desert
+
+        list.push({ id: `${x}-${y}`, x, y, distance, targetColor });
+      }
+    }
+
+    // Sort chunks by distance from center so they animate in a spiral/square outwards
+    return list.sort((a, b) => a.distance - b.distance);
+  }, []);
 
   const startLoading = () => {
+    // Synchronously trigger audio play to bypass mobile autoplay blocking
+    if (onStart) onStart();
+    
     setLoading(true);
 
     const tl = gsap.timeline({
@@ -97,11 +128,11 @@ export default function EntryLoader({ onComplete }) {
       }
     }, "start");
 
-    // Animate chunks filling in (turning green with grass texture feel)
+    // Animate chunks filling in (turning procedural terrain color)
     tl.fromTo(chunksRef.current, 
       { backgroundColor: "rgba(0, 0, 0, 0.6)" },
       {
-        backgroundColor: "#71AF45", // Authentic Minecraft Grass top color
+        backgroundColor: (index, target) => target.dataset.color,
         duration: 0.15,
         stagger: {
           each: 0.015,
@@ -203,6 +234,7 @@ export default function EntryLoader({ onComplete }) {
                 key={chunk.id}
                 ref={setChunkRef}
                 className="w-full h-full mc-chunk"
+                data-color={chunk.targetColor}
                 style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}
               />
             ))}

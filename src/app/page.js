@@ -20,13 +20,16 @@ export default function MinecraftScrollTellingApp() {
   const [muted, setMuted] = useState(false);
   const audioRef = useRef(null);
 
-  const handleEntryComplete = () => {
-    // Play music when they enter
+  const handleStart = () => {
+    // Play music synchronously on user click to bypass mobile autoplay restrictions
     if (audioRef.current) {
       audioRef.current.muted = false;
       audioRef.current.play().catch(e => console.log("Audio autoplay prevented", e));
       setMuted(false);
     }
+  };
+
+  const handleEntryComplete = () => {
     setEntered(true);
   };
 
@@ -46,7 +49,7 @@ export default function MinecraftScrollTellingApp() {
       <audio ref={audioRef} loop src="./C418 - Subwoofer Lullaby - Minecraft Volume Alpha.mp3" />
 
       {/* 3D Entry Animation Overlay */}
-      {!entered && <EntryLoader onComplete={handleEntryComplete} />}
+      {!entered && <EntryLoader onStart={handleStart} onComplete={handleEntryComplete} />}
 
       {/* Persistent Audio Toggle (Only show after entered) */}
       <button 
