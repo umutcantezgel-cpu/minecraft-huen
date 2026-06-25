@@ -60,11 +60,11 @@ export default function SocialSection() {
             <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-[#3FE0D8] px-4 py-1 border-2 border-black shadow-[2px_2px_0px_#000]">
               <h3 className="text-black font-bold uppercase tracking-widest text-sm" style={{ fontFamily: '"Press Start 2P", monospace' }}>Discord</h3>
             </div>
-            <div className="mt-6 text-[#EAEFFA] text-center leading-relaxed font-sans">
-              <p className="mb-6 font-bold">Tritt unserer florierenden Community von Baumeistern und Abenteurern bei. Sprachkanäle, Handelschats und sofortige Updates.</p>
-              <button className="w-full bg-[#3FE0D8] text-black font-bold py-3 uppercase border-t-2 border-l-2 border-white border-b-4 border-r-4 border-black hover:bg-[#2bc4bc] active:border-t-4 active:border-l-4 active:border-black active:border-b-0 active:border-r-0 transition-all" style={{ fontFamily: '"Press Start 2P", monospace', fontSize: '0.8rem' }}>
+            <div className="mt-6 text-[#EAEFFA] text-center leading-relaxed font-sans flex flex-col h-[calc(100%-2rem)]">
+              <p className="mb-6 font-bold flex-grow">Unser Hauptquartier. Sprachkanäle, spontane Sessions und alle wichtigen Updates direkt für die Gruppe.</p>
+              <a href="https://discord.com/channels/328246622834393088" target="_blank" rel="noopener noreferrer" className="block text-center w-full bg-[#3FE0D8] text-black font-bold py-3 uppercase border-t-2 border-l-2 border-white border-b-4 border-r-4 border-black hover:bg-[#2bc4bc] active:border-t-4 active:border-l-4 active:border-black active:border-b-0 active:border-r-0 transition-all" style={{ fontFamily: '"Press Start 2P", monospace', fontSize: '0.8rem' }}>
                 JETZT BEITRETEN
-              </button>
+              </a>
             </div>
           </div>
         </div>

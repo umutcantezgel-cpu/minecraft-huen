@@ -72,8 +72,8 @@ export default function MinecraftFooter() {
         {/* Discord CTA */}
         <div className="footer-element bg-[#5865F2] p-6 border-[3px] border-[#373737] shadow-[inset_0_4px_0_rgba(255,255,255,0.2),0_4px_0_rgba(0,0,0,0.5)] transform -rotate-1 hover:rotate-0 transition-transform">
           <h3 className="text-2xl font-bold mb-2 text-white text-shadow-mc font-pixel">Tritt unserem Discord bei</h3>
-          <p className="text-indigo-100 mb-4 text-sm text-shadow-mc">Erhalte Echtzeit-Updates, chatte mit der Community und nimm an exklusiven Gewinnspielen teil!</p>
-          <a href="#" className="block w-full text-center bg-[#FFFFFF] text-[#5865F2] font-bold py-3 px-4 border-b-4 border-gray-300 hover:bg-gray-100 hover:border-gray-400 active:border-b-0 active:translate-y-1 transition-all font-pixel text-shadow-mc">
+          <p className="text-indigo-100 mb-4 text-sm text-shadow-mc">Erhalte Echtzeit-Updates, chatte mit der Huen Gruppe und nimm an Events teil!</p>
+          <a href="https://discord.com/channels/328246622834393088" target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-[#FFFFFF] text-[#5865F2] font-bold py-3 px-4 border-b-4 border-gray-300 hover:bg-gray-100 hover:border-gray-400 active:border-b-0 active:translate-y-1 transition-all font-pixel text-shadow-mc">
             Jetzt verbinden
           </a>
         </div>
