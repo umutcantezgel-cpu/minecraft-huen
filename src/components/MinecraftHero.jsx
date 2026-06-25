@@ -78,8 +78,8 @@ export default function MinecraftHero() {
         </h1>
         
         <div ref={subtitleRef} className="mc-panel mb-16 max-w-3xl p-6">
-          <p className="text-2xl md:text-4xl font-bold text-white text-center" style={{ textShadow: '2px 2px 0 #000' }}>
-            Ein komplett kostenloser, privater Server für die Huen Gruppe. Kommt vorbei, ich freue mich auf euch!
+          <p className="text-xl md:text-3xl font-bold text-white text-center leading-relaxed" style={{ textShadow: '2px 2px 0 #000' }}>
+            Exklusiver Zugang für die Huen Gruppe. Erlebe ein hochmodernes Survival-Netzwerk mit industriellen Anlagen, aktiver Kampfmagie und endloser Progression. Der Soft-Launch beginnt jetzt.
           </p>
         </div>
 
@@ -130,7 +130,7 @@ export default function MinecraftHero() {
         <div ref={statsRef} className="flex justify-center mt-12 px-4">
           <div className="mc-panel p-6 text-center max-w-2xl">
             <p className="text-xl md:text-2xl text-yellow-400 font-bold drop-shadow-md">
-              👋 Wir stehen noch ganz am Anfang und der Server ist frisch aufgesetzt. Schnapp dir deine Freunde und sei einer der Ersten!
+              ⚡ Bereite dich vor. Die Server sind hochgefahren, die Welt ist vorgeneriert. Sammle deine Crew und dominiere das Endgame.
             </p>
           </div>
         </div>

@@ -118,7 +118,7 @@ export default function ConnectionGuide() {
                 <div className="w-12 h-12 shrink-0 bg-[#373737] border-4 border-[#1D1D1D] flex items-center justify-center text-xl font-bold text-yellow-400 drop-shadow-md">1</div>
                 <div>
                   <h4 className="text-xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Minecraft starten</h4>
-                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold">Öffne den Launcher, nutze Version <span className="text-yellow-400 font-mono">1.21.4</span>.</p>
+                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold text-sm">Öffne den Launcher. Benötigt explizit Version <span className="text-yellow-400 font-mono">1.21.4</span>.<br/><span className="opacity-80 text-xs">(Im Launcher auf 'Installationen' {'->'} 'Neue Installation' {'->'} 'release 1.21.4' auswählen)</span>.</p>
                 </div>
               </div>
 
@@ -174,7 +174,7 @@ export default function ConnectionGuide() {
                 <div className="w-12 h-12 shrink-0 bg-[#373737] border-4 border-[#1D1D1D] flex items-center justify-center text-xl font-bold text-yellow-400 drop-shadow-md">1</div>
                 <div>
                   <h4 className="text-xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Minecraft öffnen</h4>
-                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold">Starte auf Konsole/PE, Version <span className="text-yellow-400 font-mono">1.21.4</span>.</p>
+                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold text-sm">Starte auf Konsole/PE. Du kannst einfach mit der <span className="text-yellow-400">aktuellsten Standard-Version</span> joinen.</p>
                 </div>
               </div>
 
@@ -223,6 +223,13 @@ export default function ConnectionGuide() {
             </div>
           </div>
 
+        </div>
+
+        {/* Tech-Exzellenz Note */}
+        <div className="mt-16 mc-panel p-6 bg-black/40 border-2 border-gray-600 max-w-4xl mx-auto text-center shadow-lg">
+          <p className="text-gray-300 text-sm md:text-base font-semibold leading-relaxed">
+            <span className="text-yellow-400 font-bold">Tech-Exzellenz:</span> 100% Serverseitig modifiziert – Konsolen- und Mobile-Spieler müssen keinerlei Mods oder Texturen herunterladen. Die Welt wurde via Chunky im Radius von 2500 Blöcken komplett vorgeneriert für ein absolut lag-freies Erkundungserlebnis.
+          </p>
         </div>
       </div>
     </div>
