@@ -8,14 +8,20 @@
   --mc-dirt: #8B4513;
   --mc-dirt-dark: #5C2E0B;
   --mc-stone: #7D7D7D;
+  --mc-stone-light: #B4B4B4;
+  --mc-stone-dark: #4A4A4A;
   --mc-wood: #86592D;
+  --mc-wood-light: #A06A33;
+  --mc-wood-dark: #52351A;
   --mc-diamond: #4EEE94;
   --mc-text-dark: #1A1A1A;
   --mc-text-light: #FFFFFF;
+  --mc-text-shadow: #3F3F3F;
 }
 
 html {
   scroll-behavior: smooth;
+  image-rendering: pixelated; /* Authentic pixel art look */
 }
 
 body {
@@ -27,30 +33,99 @@ body {
 
 h1, h2, h3, h4, h5, h6, .font-mc {
   font-family: 'Pixelify Sans', cursive;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 var(--mc-text-shadow);
+  color: var(--mc-text-light);
+  letter-spacing: 0.05em;
 }
 
-.mc-button {
-  background-color: var(--mc-grass);
-  color: white;
-  border: 4px solid var(--mc-grass-light);
-  border-bottom-color: var(--mc-dirt-dark);
-  border-right-color: var(--mc-dirt-dark);
+.text-mc-dark {
+  text-shadow: 2px 2px 0 #A0A0A0;
+  color: #333333;
+}
+
+/* Authentic Minecraft UI Button */
+.mc-btn {
+  background-color: var(--mc-stone-light);
+  color: var(--mc-text-light);
+  border: 2px solid #000;
+  box-shadow: 
+    inset 2px 2px 0px 0px rgba(255,255,255,0.7),
+    inset -2px -2px 0px 0px rgba(0,0,0,0.5);
   font-family: 'Pixelify Sans', cursive;
   text-transform: uppercase;
-  transition: transform 0.1s;
+  text-shadow: 2px 2px 0 #333;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.1s;
+  image-rendering: pixelated;
+  display: inline-block;
+  text-align: center;
 }
 
-.mc-button:active {
-  border-top-color: var(--mc-dirt-dark);
-  border-left-color: var(--mc-dirt-dark);
-  border-bottom-color: var(--mc-grass-light);
-  border-right-color: var(--mc-grass-light);
-  transform: scale(0.98);
+.mc-btn:hover {
+  background-color: #92b8f8; /* Minecraft hover blue */
+  box-shadow: 
+    inset 2px 2px 0px 0px rgba(255,255,255,0.8),
+    inset -2px -2px 0px 0px rgba(0,0,0,0.6);
 }
 
+.mc-btn:active {
+  box-shadow: 
+    inset 2px 2px 0px 0px rgba(0,0,0,0.5),
+    inset -2px -2px 0px 0px rgba(255,255,255,0.7);
+  transform: translateY(2px);
+}
+
+/* Authentic Minecraft UI Panel */
 .mc-panel {
-  background-color: rgba(255, 255, 255, 0.9);
-  border: 4px solid var(--mc-stone);
-  border-radius: 2px;
-  box-shadow: 8px 8px 0px rgba(0,0,0,0.15);
+  background-color: #C6C6C6;
+  border: 2px solid #000;
+  box-shadow: 
+    inset 3px 3px 0px 0px #FFFFFF,
+    inset -3px -3px 0px 0px #555555;
+  color: #333;
+  padding: 24px;
+  font-family: 'Pixelify Sans', cursive;
+  image-rendering: pixelated;
+}
+
+/* Authentic Minecraft Dirt Panel */
+.mc-panel-dirt {
+  background-color: var(--mc-dirt);
+  border: 2px solid #000;
+  box-shadow: 
+    inset 3px 3px 0px 0px var(--mc-grass),
+    inset -3px -3px 0px 0px var(--mc-dirt-dark);
+  color: var(--mc-text-light);
+  padding: 24px;
+  font-family: 'Pixelify Sans', cursive;
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* Minecraft Wood Panel */
+.mc-panel-wood {
+  background-color: var(--mc-wood);
+  border: 2px solid #000;
+  box-shadow: 
+    inset 3px 3px 0px 0px var(--mc-wood-light),
+    inset -3px -3px 0px 0px var(--mc-wood-dark);
+  color: var(--mc-text-light);
+  padding: 24px;
+  font-family: 'Pixelify Sans', cursive;
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* Scrollbar styling for MC vibe */
+::-webkit-scrollbar {
+  width: 14px;
+}
+::-webkit-scrollbar-track {
+  background: #C6C6C6;
+  border-left: 2px solid #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #8B8B8B;
+  border: 2px solid #000;
+  box-shadow: inset 2px 2px 0 #FFFFFF, inset -2px -2px 0 #555555;
 }

@@ -8,118 +8,172 @@ const ranks = [
   {
     name: "Iron",
     price: "$4.99/mo",
-    color: "bg-gray-300 text-gray-800",
-    border: "border-gray-500",
+    bgClass: "bg-[#e5e5e5]",
+    borderClass: "border-[#ffffff] border-b-[#8b8b8b] border-r-[#8b8b8b]",
+    textClass: "text-[#333333]",
     perks: ["Custom Prefix", "/fly in hub", "1 Home", "White Chat Color"],
   },
   {
     name: "Gold",
     price: "$9.99/mo",
-    color: "bg-yellow-400 text-yellow-900",
-    border: "border-yellow-600",
+    bgClass: "bg-[#fcefa1]",
+    borderClass: "border-[#fdf5c3] border-b-[#d6b738] border-r-[#d6b738]",
+    textClass: "text-[#7a5800]",
     perks: ["Everything in Iron", "Priority Queue", "3 Homes", "Yellow Chat Color", "Access to /kit gold"],
   },
   {
     name: "Diamond",
     price: "$19.99/mo",
-    color: "bg-cyan-400 text-cyan-900",
-    border: "border-cyan-600",
+    bgClass: "bg-[#6bebe4]",
+    borderClass: "border-[#a5f4f0] border-b-[#32a49f] border-r-[#32a49f]",
+    textClass: "text-[#0d5955]",
     perks: ["Everything in Gold", "/nick command", "5 Homes", "Cyan Chat Color", "Access to /kit diamond", "Custom Join Message"],
   },
   {
     name: "Emerald",
     price: "$39.99/mo",
-    color: "bg-green-500 text-green-900",
-    border: "border-green-700",
+    bgClass: "bg-[#41f384]",
+    borderClass: "border-[#85f8b2] border-b-[#26ad55] border-r-[#26ad55]",
+    textClass: "text-[#0a4720]",
     perks: ["Everything in Diamond", "Unlimited Homes", "Green Chat Color", "Access to /kit emerald", "Private Vault", "Exclusive Cosmetics"],
   }
 ];
 
 export default function RanksSection() {
   const sectionRef = useRef(null);
+  const titleRef = useRef(null);
   const cardsRef = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Scroll animation for title
-      gsap.from(".ranks-title", {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
+      // Deep scrub animation for title
+      gsap.fromTo(titleRef.current, 
+        {
+          y: 150,
+          scale: 0.5,
+          opacity: 0,
+          rotationX: 45,
         },
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        ease: "back.out(1.7)"
-      });
+        {
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "top 25%",
+            scrub: 1,
+          },
+          y: 0,
+          scale: 1,
+          opacity: 1,
+          rotationX: 0,
+          transformOrigin: "center bottom",
+          ease: "none"
+        }
+      );
 
-      // Scroll animation for cards
-      gsap.from(cardsRef.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-        },
-        y: 100,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power3.out"
-      });
-
-      // Hover animations for cards
-      cardsRef.current.forEach((card) => {
-        if (!card) return;
-        card.addEventListener("mouseenter", () => {
-          gsap.to(card, { y: -10, scale: 1.05, duration: 0.3, ease: "power2.out" });
-        });
-        card.addEventListener("mouseleave", () => {
-          gsap.to(card, { y: 0, scale: 1, duration: 0.3, ease: "power2.out" });
-        });
+      // Deep scrub animation for cards coming in from different angles/positions
+      cardsRef.current.forEach((card, i) => {
+        gsap.fromTo(card, 
+          {
+            y: 350,
+            z: -500,
+            rotationX: 45,
+            rotationY: (i % 2 === 0 ? -15 : 15),
+            opacity: 0,
+          },
+          {
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 80%",
+              end: "center center",
+              scrub: 1,
+            },
+            y: 0,
+            z: 0,
+            rotationX: 0,
+            rotationY: 0,
+            opacity: 1,
+            ease: "none"
+          }
+        );
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
+  // Minecraft dirt background pattern
+  const dirtPattern = "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZmlsbD0iIzg2NjAyNCIgZD0iTTAgMGgxNnYxNkgweiIvPjxwYXRoIGZpbGw9IiM1YzRkMzYiIGQ9Ik0wIDBoNHY0SDB6bTEyIDBoNHY0aC00em0tOCAwaDR2NEg0em04IDRoNHY0aC00em0tOCAwaDR2NEg0eiIvPjxwYXRoIGZpbGw9IiM3NDUxMjAiIGQ9Ik0wIDRoNHY0SDB6bTEyIDRoNHY0aC00em0tNCA0aDR2NEg4em0tOCAwaDR2NEgweiIvPjwvc3ZnPg==')";
+
   return (
-    <section ref={sectionRef} className="py-20 bg-sky-100 border-y-8 border-sky-300" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg width=\\'60\\' height=\\'60\\' viewBox=\\'0 0 60 60\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cg fill=\\'none\\' fill-rule=\\'evenodd\\'%3E%3Cg fill=\\'%239C92AC\\' fill-opacity=\\'0.1\\'%3E%3Cpath d=\\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')" }}>
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 ranks-title">
-          <h2 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-yellow-600 mb-4 inline-block drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]" style={{ WebkitTextStroke: '2px #422800' }}>
-            SERVER RANKS
+    <section 
+      ref={sectionRef} 
+      className="py-32 border-y-[16px] border-[#5c4d36] relative overflow-hidden font-mono" 
+      style={{ backgroundImage: dirtPattern, backgroundSize: '64px 64px', imageRendering: 'pixelated' }}
+    >
+      {/* Dark overlay for better text contrast */}
+      <div className="absolute inset-0 bg-black/60"></div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div ref={titleRef} className="text-center mb-24">
+          <h2 
+            className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-[#ffff55] to-[#ffaa00] mb-6 inline-block" 
+            style={{ 
+              WebkitTextStroke: '3px #3e2800', 
+              filter: 'drop-shadow(4px 4px 0px #000)',
+              textTransform: 'uppercase',
+              letterSpacing: '2px'
+            }}
+          >
+            Server Ranks
           </h2>
-          <p className="text-xl md:text-2xl text-slate-800 font-bold max-w-2xl mx-auto drop-shadow-sm">
-            Support the server and get amazing perks in return! Choose the rank that fits your playstyle.
+          <p className="text-xl md:text-2xl text-[#dddddd] font-bold max-w-2xl mx-auto drop-shadow-[2px_2px_0px_#000]">
+            Support the server. Claim epic perks. Become a legend.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto" style={{ perspective: '1200px' }}>
           {ranks.map((rank, index) => (
             <div 
               key={rank.name}
               ref={(el) => (cardsRef.current[index] = el)}
-              className={`rounded-none p-6 border-b-[12px] border-r-[12px] border-t-[4px] border-l-[4px] ${rank.color} ${rank.border} shadow-2xl relative overflow-hidden`}
-              style={{
-                boxShadow: "inset 0 0 0 4px rgba(255,255,255,0.3)"
-              }}
+              className="will-change-transform"
             >
-              <div className="absolute top-0 right-0 w-16 h-16 bg-white/20 transform rotate-45 translate-x-8 -translate-y-8"></div>
-              
-              <h3 className="text-3xl md:text-4xl font-black mb-2 uppercase tracking-widest drop-shadow-md" style={{ WebkitTextStroke: '1px rgba(0,0,0,0.2)' }}>{rank.name}</h3>
-              <div className="text-2xl md:text-3xl font-black mb-6 opacity-90 drop-shadow-sm">{rank.price}</div>
-              
-              <ul className="space-y-4 mb-8">
-                {rank.perks.map((perk, i) => (
-                  <li key={i} className="flex items-start font-bold text-lg md:text-xl drop-shadow-sm leading-tight">
-                    <span className="mr-3 text-current opacity-80 mt-1">✦</span>
-                    {perk}
-                  </li>
-                ))}
-              </ul>
+              <div className="p-1 transform transition-transform duration-300 hover:-translate-y-4 hover:scale-105 group h-full">
+                {/* Outer stroke effect for Minecraft UI */}
+                <div className="bg-[#000000] p-1 h-full shadow-[8px_8px_0px_rgba(0,0,0,0.5)]">
+                  {/* Inner block styling */}
+                  <div className={`h-full ${rank.bgClass} border-[6px] ${rank.borderClass} p-6 flex flex-col`}>
+                    
+                    <div className="text-center mb-6 pb-6 border-b-4 border-black/10">
+                      <h3 
+                        className={`text-4xl font-black uppercase mb-3 ${rank.textClass} drop-shadow-[2px_2px_0px_rgba(255,255,255,0.4)]`}
+                        style={{ letterSpacing: '1px' }}
+                      >
+                        {rank.name}
+                      </h3>
+                      <div className={`text-2xl font-black ${rank.textClass} opacity-80 bg-black/10 inline-block px-4 py-1 border-2 border-black/20`}>
+                        {rank.price}
+                      </div>
+                    </div>
+                    
+                    <ul className="space-y-4 mb-8 flex-grow">
+                      {rank.perks.map((perk, i) => (
+                        <li key={i} className={`flex items-start font-bold text-lg md:text-xl ${rank.textClass} leading-tight`}>
+                          <span className="mr-3 text-black/40 mt-1 text-sm">▶</span>
+                          <span className="drop-shadow-[1px_1px_0px_rgba(255,255,255,0.3)]">{perk}</span>
+                        </li>
+                      ))}
+                    </ul>
 
-              <button className="w-full py-4 px-4 bg-black/20 hover:bg-black/30 text-white font-black text-2xl uppercase tracking-widest border-b-4 border-r-4 border-t-2 border-l-2 border-black/50 transition-colors shadow-lg active:translate-y-1 active:border-b-2 active:border-r-2" style={{ textShadow: "2px 2px 0 #000" }}>
-                Select
-              </button>
+                    <button 
+                      className="w-full py-4 px-4 bg-[#444444] hover:bg-[#555555] text-white font-black text-2xl uppercase border-[4px] border-[#222222] border-t-[#777777] border-l-[#777777] active:border-b-[#777777] active:border-r-[#777777] active:border-t-[#222222] active:border-l-[#222222] transition-none shadow-[4px_4px_0px_rgba(0,0,0,0.3)]" 
+                      style={{ textShadow: "2px 2px 0 #000" }}
+                    >
+                      Select
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </div>

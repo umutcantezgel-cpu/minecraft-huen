@@ -14,36 +14,38 @@ export default function SlimefunSection() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 70%',
-          end: 'bottom center',
-          toggleActions: 'play none none reverse',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          scrub: 1,
         }
       });
 
       tl.from(titleRef.current, {
-        y: 80,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power4.out',
-      })
-      .from(itemsRef.current, {
         y: 100,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'back.out(1.5)',
-      }, "-=0.4");
-      
-      // Continuous floating animation
+        scale: 0.9,
+        ease: 'none',
+      })
+      .to(titleRef.current, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        ease: 'none',
+      }, 0.2);
+
       itemsRef.current.forEach((item, i) => {
-        gsap.to(item, {
-          y: i % 2 === 0 ? -10 : 10,
-          duration: 2 + i * 0.2,
-          yoyo: true,
-          repeat: -1,
-          ease: 'sine.inOut',
-          delay: i * 0.1
-        });
+        tl.from(item, {
+          y: 150 + (i * 50),
+          opacity: 0,
+          rotation: (i % 2 === 0 ? -5 : 5),
+          ease: 'none',
+        }, i * 0.1)
+        .to(item, {
+          y: 0,
+          opacity: 1,
+          rotation: 0,
+          ease: 'none',
+        }, i * 0.1 + 0.3);
       });
       
     }, sectionRef);
@@ -55,57 +57,51 @@ export default function SlimefunSection() {
     {
       title: "Automated Factories",
       desc: "Build massive production lines with auto-crafters, smelters, and sorters. Automate everything from ore doubling to complex crafting.",
-      icon: "🏭",
-      color: "from-green-400 to-emerald-600",
-      shadow: "shadow-emerald-500/50"
+      icon: "🏭"
     },
     {
       title: "Cargo Networks",
       desc: "Transport items seamlessly across your base using advanced routing nodes. Keep your storage perfectly sorted.",
-      icon: "📦",
-      color: "from-blue-400 to-cyan-600",
-      shadow: "shadow-cyan-500/50"
+      icon: "📦"
     },
     {
       title: "Nuclear Reactors",
       desc: "Harness immense power to run your machines, but keep the cooling systems running to prevent devastating meltdowns!",
-      icon: "☢️",
-      color: "from-amber-400 to-orange-600",
-      shadow: "shadow-orange-500/50"
+      icon: "☢️"
     },
     {
       title: "Magical Gadgets",
       desc: "Craft jetpacks, grappling hooks, and elemental staves. Dominate the skies and traverse the world with ease.",
-      icon: "✨",
-      color: "from-purple-400 to-fuchsia-600",
-      shadow: "shadow-fuchsia-500/50"
+      icon: "✨"
     }
   ];
 
   return (
     <section 
       ref={sectionRef} 
-      className="relative min-h-screen bg-neutral-900 py-32 px-6 lg:px-12 overflow-hidden"
-      style={{ fontFamily: "'Inter', sans-serif" }}
+      className="relative min-h-screen bg-[#111111] py-32 px-6 lg:px-12 overflow-hidden mc-font"
     >
       {/* Minecraft-like grid background */}
       <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+        className="absolute inset-0 opacity-[0.2] pointer-events-none image-pixelated" 
         style={{ 
-          backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)', 
-          backgroundSize: '64px 64px' 
+          backgroundImage: 'linear-gradient(45deg, #222 25%, transparent 25%, transparent 75%, #222 75%, #222), linear-gradient(45deg, #222 25%, transparent 25%, transparent 75%, #222 75%, #222)', 
+          backgroundSize: '64px 64px',
+          backgroundPosition: '0 0, 32px 32px'
         }} 
       />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div ref={titleRef} className="text-center mb-24">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-semibold tracking-wide text-sm mb-6">
-            MODPACK EXPERIENCE
+        <div ref={titleRef} className="text-center mb-24 flex flex-col items-center">
+          <div className="mc-panel bg-[#1a1a1a] inline-block px-6 py-2 mb-6 border-4 border-[#3a3a3a]">
+            <span className="text-[#55FF55] font-bold tracking-widest text-sm drop-shadow-[2px_2px_0px_#000]">
+              MODPACK EXPERIENCE
+            </span>
           </div>
-          <h2 className="text-5xl md:text-7xl font-black mb-6 text-white tracking-tight">
-            Discover <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">Slimefun 4</span>
+          <h2 className="text-5xl md:text-7xl font-black mb-6 text-white drop-shadow-[4px_4px_0px_#000]">
+            Discover <span className="text-[#55FF55]">Slimefun 4</span>
           </h2>
-          <p className="text-xl md:text-2xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-[#AAAAAA] max-w-3xl mx-auto leading-relaxed drop-shadow-[2px_2px_0px_#000]">
             Expand your Minecraft world with hundreds of new items, machines, and multi-block structures—no client mods required.
           </p>
         </div>
@@ -115,32 +111,24 @@ export default function SlimefunSection() {
             <div 
               key={i}
               ref={el => itemsRef.current[i] = el}
-              className="group relative"
+              className="mc-panel relative p-6 flex flex-col group hover:-translate-y-2 transition-transform duration-300"
             >
-              <div className={`absolute -inset-0.5 rounded-2xl bg-gradient-to-br ${feat.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md`} />
-              <div className="relative h-full bg-neutral-800 p-8 rounded-2xl border border-neutral-700/50 flex flex-col hover:-translate-y-2 transition-transform duration-300">
-                <div className={`w-16 h-16 rounded-xl flex items-center justify-center text-3xl mb-6 bg-gradient-to-br ${feat.color} shadow-lg ${feat.shadow}`}>
-                  {feat.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">{feat.title}</h3>
-                <p className="text-neutral-400 leading-relaxed flex-grow">
-                  {feat.desc}
-                </p>
+              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="w-16 h-16 bg-[#222222] border-4 border-[#111111] border-b-[#444444] border-r-[#444444] flex items-center justify-center text-3xl mb-6 shadow-[inset_0px_0px_10px_#000] drop-shadow-[2px_2px_0px_rgba(0,0,0,0.5)]">
+                {feat.icon}
               </div>
+              <h3 className="text-2xl font-bold text-white mb-4 drop-shadow-[2px_2px_0px_#000]">{feat.title}</h3>
+              <p className="text-[#AAAAAA] leading-relaxed flex-grow drop-shadow-[2px_2px_0px_#000]">
+                {feat.desc}
+              </p>
             </div>
           ))}
         </div>
         
         <div className="mt-32 text-center flex flex-col items-center">
-          <div className="h-24 w-px bg-gradient-to-b from-transparent via-emerald-500 to-transparent mb-8 opacity-50" />
-          <button className="group relative px-8 py-4 bg-white text-neutral-900 font-bold rounded-xl overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(16,185,129,0.3)]">
-            <span className="relative z-10 flex items-center gap-2 text-lg">
-              Open the Guidebook
-              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="mc-panel bg-[#444444] w-2 h-24 mb-8 border-2 border-[#222222]" />
+          <button className="mc-btn px-8 py-4 text-xl">
+            Open the Guidebook
           </button>
         </div>
       </div>

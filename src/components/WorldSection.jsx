@@ -7,16 +7,16 @@ gsap.registerPlugin(ScrollTrigger);
 export default function WorldSection() {
   const sectionRef = useRef(null);
   const containerRef = useRef(null);
+  const bgLayer1Ref = useRef(null);
+  const bgLayer2Ref = useRef(null);
 
   useEffect(() => {
     const section = sectionRef.current;
     const container = containerRef.current;
-
+    
     let totalWidth = container.scrollWidth - window.innerWidth;
 
-    gsap.to(container, {
-      x: () => -totalWidth,
-      ease: "none",
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         pin: true,
@@ -26,6 +26,27 @@ export default function WorldSection() {
       }
     });
 
+    // Main horizontal scroll
+    tl.to(container, {
+      x: () => -totalWidth,
+      ease: "none",
+    }, 0);
+
+    // Deep scrub interactivity: Parallax background layers
+    if (bgLayer1Ref.current) {
+      tl.to(bgLayer1Ref.current, {
+        x: () => -(totalWidth * 0.3),
+        ease: "none",
+      }, 0);
+    }
+    
+    if (bgLayer2Ref.current) {
+      tl.to(bgLayer2Ref.current, {
+        x: () => -(totalWidth * 0.6),
+        ease: "none",
+      }, 0);
+    }
+
     return () => {
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
@@ -34,90 +55,169 @@ export default function WorldSection() {
   return (
     <section 
       ref={sectionRef} 
-      className="world-section relative h-screen w-full overflow-hidden bg-[#87CEEB] font-sans"
-      style={{
-        imageRendering: 'pixelated'
-      }}
+      className="world-section relative h-screen w-full overflow-hidden bg-[#78A7FF] font-sans select-none"
+      style={{ imageRendering: 'pixelated' }}
     >
-      {/* Sun */}
-      <div className="absolute top-10 right-20 w-32 h-32 bg-yellow-300 border-4 border-black" />
-
-      {/* Clouds */}
-      <div className="absolute top-20 left-40 flex space-x-2">
-        <div className="w-24 h-12 bg-white border-2 border-black" />
-        <div className="w-32 h-16 bg-white border-2 border-black -ml-4 -mt-2" />
-        <div className="w-20 h-10 bg-white border-2 border-black -ml-2 mt-4" />
+      {/* Background Parallax Layer 1 (Slowest - Sun & Clouds) */}
+      <div ref={bgLayer1Ref} className="absolute inset-0 w-[200vw] h-full pointer-events-none flex z-0">
+        <div className="absolute top-10 left-[10vw] w-24 h-24 bg-[#FFDF00] border-[6px] border-black" />
+        
+        <div className="absolute top-24 left-[20vw] flex space-x-2 opacity-90">
+          <div className="w-32 h-12 bg-white border-[6px] border-black shadow-[6px_6px_0_rgba(0,0,0,0.15)]" />
+          <div className="w-48 h-16 bg-white border-[6px] border-black -ml-8 -mt-4 shadow-[6px_6px_0_rgba(0,0,0,0.15)]" />
+        </div>
+        
+        <div className="absolute top-16 left-[80vw] flex space-x-2 opacity-90">
+          <div className="w-24 h-10 bg-white border-[6px] border-black shadow-[6px_6px_0_rgba(0,0,0,0.15)]" />
+          <div className="w-32 h-16 bg-white border-[6px] border-black -ml-4 -mt-2 shadow-[6px_6px_0_rgba(0,0,0,0.15)]" />
+        </div>
       </div>
 
-      <div 
-        ref={containerRef}
-        className="flex h-full w-[400vw]"
-      >
-        {/* Slide 1 */}
-        <div className="w-screen h-full flex flex-col justify-end items-center relative">
-          <div className="absolute inset-0 flex flex-col items-center justify-center mb-40">
-            <h2 className="text-6xl text-white font-bold tracking-widest uppercase drop-shadow-[4px_4px_0_rgba(0,0,0,1)] text-center">
-              Explore The Overworld
-            </h2>
-            <p className="mt-4 text-2xl text-white drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">
-              Vast landscapes await.
-            </p>
-          </div>
-          <div className="w-full h-1/3 bg-[#5C8930] border-t-8 border-[#3A561E] flex flex-col">
-            <div className="w-full flex-grow bg-[#8B5A2B]" />
-          </div>
-        </div>
+      {/* Background Parallax Layer 2 (Medium - Distant Mountains) */}
+      <div ref={bgLayer2Ref} className="absolute inset-0 w-[300vw] h-full pointer-events-none flex items-end pb-[33vh] z-0">
+         <div className="w-[100vw] h-64 bg-[#4A7023] border-t-[8px] border-black border-r-[8px]" />
+         <div className="w-[100vw] h-48 bg-[#3D5C1D] border-t-[8px] border-black border-r-[8px] -ml-10" />
+         <div className="w-[100vw] h-72 bg-[#527A27] border-t-[8px] border-black" />
+      </div>
 
-        {/* Slide 2 */}
+      {/* Foreground Container (Fastest - Main Content) */}
+      <div ref={containerRef} className="flex h-full w-[400vw] relative z-10">
+        
+        {/* Slide 1: The Overworld */}
         <div className="w-screen h-full flex flex-col justify-end items-center relative">
-          <div className="absolute inset-0 flex flex-col items-center justify-center mb-40">
-            <h2 className="text-6xl text-white font-bold tracking-widest uppercase drop-shadow-[4px_4px_0_rgba(0,0,0,1)] text-center">
-              Build Your Dream Base
-            </h2>
-            <div className="mt-8 flex gap-4">
-              <div className="w-16 h-16 bg-[#A0A0A0] border-4 border-black" />
-              <div className="w-16 h-16 bg-[#8B5A2B] border-4 border-black" />
-              <div className="w-16 h-16 bg-[#C4A484] border-4 border-black" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center mb-40 px-4">
+            {/* Minecraft Style Panel */}
+            <div className="bg-[#C6C6C6] border-[6px] border-black shadow-[inset_-6px_-6px_0_rgba(85,85,85,1),inset_6px_6px_0_rgba(255,255,255,1),8px_8px_0_rgba(0,0,0,0.25)] p-10 max-w-3xl text-center">
+              <h2 className="text-5xl md:text-6xl text-[#333333] font-bold tracking-widest uppercase mb-6 drop-shadow-[3px_3px_0_rgba(255,255,255,1)]">
+                The Overworld
+              </h2>
+              <div className="h-1.5 w-full bg-[#555555] mb-6 border-b-[3px] border-white"></div>
+              <p className="text-xl md:text-2xl text-[#222222] font-semibold leading-relaxed">
+                Step into a sprawling landscape of lush forests, towering mountains, and deep ravines. Gather resources, farm crops, and survive the night.
+              </p>
             </div>
           </div>
-          <div className="w-full h-1/3 bg-[#5C8930] border-t-8 border-[#3A561E] flex flex-col">
-            <div className="w-full flex-grow bg-[#8B5A2B]" />
+          {/* Ground */}
+          <div className="w-full h-[33vh] bg-[#5C8930] border-t-[12px] border-[#81B947] flex flex-col relative">
+             <div className="absolute top-0 left-10 w-12 h-12 bg-[#81B947]" />
+             <div className="absolute top-0 left-32 w-16 h-16 bg-[#81B947]" />
+             <div className="absolute top-0 right-40 w-14 h-14 bg-[#81B947]" />
+             <div className="w-full h-10 bg-[#3A561E]" />
+             <div className="w-full flex-grow bg-[#8B5A2B] relative overflow-hidden">
+                <div className="absolute top-10 left-10 w-6 h-6 bg-[#6A4420]" />
+                <div className="absolute top-4 left-40 w-8 h-8 bg-[#6A4420]" />
+                <div className="absolute top-20 left-[60%] w-6 h-6 bg-[#6A4420]" />
+             </div>
           </div>
         </div>
 
-        {/* Slide 3 */}
-        <div className="w-screen h-full flex flex-col justify-end items-center relative bg-[#3C3C3C] border-l-8 border-black">
-          <div className="absolute top-10 left-20 flex space-x-2">
-            <div className="w-20 h-10 bg-gray-600 border-2 border-black" />
-            <div className="w-24 h-12 bg-gray-600 border-2 border-black -ml-4 -mt-2" />
+        {/* Slide 2: Building */}
+        <div className="w-screen h-full flex flex-col justify-end items-center relative">
+          <div className="absolute inset-0 flex flex-col items-center justify-center mb-40 px-4">
+            {/* Dirt Style Panel */}
+            <div className="bg-[#8B5A2B] border-[6px] border-black shadow-[inset_-6px_-6px_0_rgba(90,58,26,1),inset_6px_6px_0_rgba(166,124,82,1),8px_8px_0_rgba(0,0,0,0.3)] p-10 max-w-3xl text-center">
+              <h2 className="text-5xl md:text-6xl text-white font-bold tracking-widest uppercase mb-6 drop-shadow-[3px_3px_0_rgba(0,0,0,1)]">
+                Build Your Base
+              </h2>
+              <div className="h-1.5 w-full bg-[#5A3A1A] mb-6 border-b-[3px] border-[#A67C52]"></div>
+              <p className="text-xl md:text-2xl text-[#F0E6D2] font-semibold leading-relaxed mb-8 drop-shadow-[2px_2px_0_rgba(0,0,0,0.8)]">
+                From humble dirt huts to massive redstone contraptions. Your imagination is the only limit.
+              </p>
+              <div className="flex justify-center gap-8">
+                {/* Stone Block */}
+                <div className="w-24 h-24 bg-[#A0A0A0] border-t-[12px] border-l-[12px] border-[#C0C0C0] border-b-[12px] border-r-[12px] border-[#606060] shadow-[6px_6px_0_rgba(0,0,0,0.5)] relative">
+                  <div className="absolute inset-0 border-[4px] border-black mix-blend-overlay opacity-20"></div>
+                </div>
+                {/* Wood Block */}
+                <div className="w-24 h-24 bg-[#8B5A2B] border-t-[12px] border-l-[12px] border-[#A67C52] border-b-[12px] border-r-[12px] border-[#5A3A1A] shadow-[6px_6px_0_rgba(0,0,0,0.5)] relative flex items-center justify-center overflow-hidden">
+                   <div className="w-full h-3 bg-[#5A3A1A] absolute opacity-40"></div>
+                   <div className="absolute inset-0 border-[4px] border-black mix-blend-overlay opacity-20"></div>
+                </div>
+                {/* Planks Block */}
+                <div className="w-24 h-24 bg-[#C4A484] border-t-[12px] border-l-[12px] border-[#E6CDAA] border-b-[12px] border-r-[12px] border-[#8B6B4A] shadow-[6px_6px_0_rgba(0,0,0,0.5)] relative">
+                   <div className="absolute inset-0 border-[4px] border-black mix-blend-overlay opacity-20"></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="absolute inset-0 flex flex-col items-center justify-center mb-40">
-            <h2 className="text-6xl text-red-500 font-bold tracking-widest uppercase drop-shadow-[4px_4px_0_rgba(0,0,0,1)] text-center">
-              Venture Into The Nether
-            </h2>
-            <p className="mt-4 text-2xl text-white drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">
-              Where danger lurks.
-            </p>
-          </div>
-          <div className="w-full h-1/3 bg-[#600000] border-t-8 border-[#400000] flex flex-col">
-            <div className="w-full flex-grow bg-[#300000]" />
+          {/* Ground */}
+          <div className="w-full h-[33vh] bg-[#5C8930] border-t-[12px] border-[#81B947] flex flex-col relative">
+             <div className="absolute top-0 left-20 w-10 h-10 bg-[#81B947]" />
+             <div className="w-full h-10 bg-[#3A561E]" />
+             <div className="w-full flex-grow bg-[#8B5A2B] relative overflow-hidden">
+                <div className="absolute top-12 left-[20%] w-8 h-8 bg-[#6A4420]" />
+                <div className="absolute top-24 left-[80%] w-6 h-6 bg-[#6A4420]" />
+             </div>
           </div>
         </div>
 
-        {/* Slide 4 */}
-        <div className="w-screen h-full flex flex-col justify-end items-center relative bg-[#110022] border-l-8 border-black">
-          <div className="absolute inset-0 flex flex-col items-center justify-center mb-40">
-            <h2 className="text-6xl text-[#EEDDFF] font-bold tracking-widest uppercase drop-shadow-[4px_4px_0_rgba(255,255,255,0.5)] text-center">
-              Defeat The End
-            </h2>
-            <p className="mt-4 text-2xl text-[#EEDDFF] drop-shadow-[2px_2px_0_rgba(255,255,255,0.5)]">
-              The final frontier.
-            </p>
+        {/* Slide 3: The Nether */}
+        <div className="w-screen h-full flex flex-col justify-end items-center relative transition-colors duration-1000 group">
+          <div className="absolute inset-0 bg-[#3C1111] -z-10 border-l-[16px] border-black" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center mb-40 px-4">
+            {/* Nether Style Panel */}
+            <div className="bg-[#600000] border-[6px] border-black shadow-[inset_-6px_-6px_0_rgba(48,0,0,1),inset_6px_6px_0_rgba(138,0,0,1),8px_8px_0_rgba(0,0,0,0.8)] p-10 max-w-3xl text-center relative overflow-hidden">
+              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_#AA00FF_0%,_transparent_100%)] mix-blend-screen" />
+              
+              <h2 className="text-5xl md:text-6xl text-[#FF5555] font-bold tracking-widest uppercase mb-6 drop-shadow-[3px_3px_0_rgba(0,0,0,1)] relative z-10">
+                The Nether
+              </h2>
+              <div className="h-1.5 w-full bg-[#300000] mb-6 border-b-[3px] border-[#8A0000] relative z-10"></div>
+              <p className="text-xl md:text-2xl text-[#FFAAAA] font-semibold leading-relaxed relative z-10 drop-shadow-[2px_2px_0_rgba(0,0,0,0.8)]">
+                A hellscape of fire, lava, and dangerous mobs. Mine ancient debris and brave the fortresses to gather rare loot.
+              </p>
+            </div>
           </div>
-          <div className="w-full h-1/3 bg-[#F0F0A0] border-t-8 border-[#A0A050] flex flex-col">
-            <div className="w-full flex-grow bg-[#E0E080]" />
+          {/* Nether Ground */}
+          <div className="w-full h-[33vh] bg-[#600000] border-t-[12px] border-[#8A0000] flex flex-col relative z-10">
+             <div className="w-full h-10 bg-[#400000]" />
+             <div className="w-full flex-grow bg-[#300000] relative overflow-hidden">
+                <div className="absolute top-4 left-[30%] w-24 h-12 bg-[#FF5500] border-b-[6px] border-[#CC4400]" />
+                <div className="absolute top-16 left-[35%] w-12 h-12 bg-[#FF5500]" />
+                <div className="absolute top-10 left-[70%] w-6 h-6 bg-[#1A0000]" />
+             </div>
           </div>
         </div>
+
+        {/* Slide 4: The End */}
+        <div className="w-screen h-full flex flex-col justify-end items-center relative">
+          <div className="absolute inset-0 bg-[#0A0514] -z-10 border-l-[16px] border-black">
+             <div className="absolute top-[10%] left-[10%] w-3 h-3 bg-[#EEDDFF] opacity-50" />
+             <div className="absolute top-[20%] left-[40%] w-3 h-3 bg-[#EEDDFF] opacity-70" />
+             <div className="absolute top-[15%] left-[70%] w-4 h-4 bg-[#EEDDFF] opacity-40" />
+             <div className="absolute top-[30%] left-[85%] w-3 h-3 bg-[#EEDDFF] opacity-80" />
+             <div className="absolute top-[50%] left-[25%] w-2 h-2 bg-[#EEDDFF] opacity-60" />
+          </div>
+          
+          <div className="absolute inset-0 flex flex-col items-center justify-center mb-40 px-4">
+            {/* End Style Panel */}
+            <div className="bg-[#1A1A1A] border-[6px] border-[#333333] shadow-[inset_-6px_-6px_0_rgba(0,0,0,0.8),inset_6px_6px_0_rgba(255,255,255,0.1),8px_8px_0_rgba(0,0,0,1)] p-10 max-w-3xl text-center border-t-[#8B00FF] border-t-[12px]">
+              <h2 className="text-5xl md:text-6xl text-[#EEDDFF] font-bold tracking-widest uppercase mb-6 drop-shadow-[3px_3px_0_rgba(139,0,255,0.8)]">
+                The End
+              </h2>
+              <div className="h-1.5 w-full bg-[#000000] mb-6 border-b-[3px] border-[#333333]"></div>
+              <p className="text-xl md:text-2xl text-[#D0C0E0] font-semibold leading-relaxed mb-10 drop-shadow-[2px_2px_0_rgba(0,0,0,0.8)]">
+                Face the Ender Dragon in the barren void. Claim the ultimate victory and soar the skies with Elytra.
+              </p>
+              
+              <div className="flex justify-center">
+                {/* End Crystal */}
+                <div className="w-20 h-20 bg-[#FFAAFF] border-[6px] border-[#FF55FF] rotate-45 shadow-[0_0_30px_rgba(255,85,255,0.8)] relative">
+                   <div className="absolute inset-0 border-[4px] border-white mix-blend-overlay opacity-50"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* End Stone Ground */}
+          <div className="w-full h-[33vh] bg-[#F0F0A0] border-t-[12px] border-[#FFFFC0] flex flex-col relative z-10">
+             <div className="w-full h-10 bg-[#A0A050]" />
+             <div className="w-full flex-grow bg-[#E0E080] relative overflow-hidden">
+                <div className="absolute top-10 left-[25%] w-6 h-6 bg-[#C0C060]" />
+                <div className="absolute top-20 left-[75%] w-8 h-8 bg-[#C0C060]" />
+             </div>
+          </div>
+        </div>
+        
       </div>
     </section>
   );

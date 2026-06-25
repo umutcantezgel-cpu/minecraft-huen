@@ -53,21 +53,20 @@ export default function RulesSection() {
           { 
             opacity: 0, 
             y: 100, 
-            rotationX: -45, 
-            scale: 0.8 
+            rotationX: -15, 
+            scale: 0.9 
           },
           {
             opacity: 1,
             y: 0,
             rotationX: 0,
             scale: 1,
-            duration: 1,
-            ease: "back.out(1.7)",
+            ease: "none",
             scrollTrigger: {
               trigger: el,
-              start: "top 80%",
-              end: "bottom 20%",
-              toggleActions: "play reverse play reverse",
+              start: "top 95%",
+              end: "center center",
+              scrub: 1,
             }
           }
         );
@@ -80,71 +79,52 @@ export default function RulesSection() {
   return (
     <section 
       ref={containerRef} 
-      style={{
-        padding: '100px 20px',
-        backgroundColor: '#71A03A', // Minecraft grass top color
-        backgroundImage: 'linear-gradient(rgba(0,0,0,0.1) 2px, transparent 2px), linear-gradient(90deg, rgba(0,0,0,0.1) 2px, transparent 2px)',
-        backgroundSize: '40px 40px',
-        minHeight: '100vh',
-        fontFamily: '"Courier New", Courier, monospace', // Fallback pixel-ish font
-        color: 'white',
-        overflow: 'hidden'
-      }}
+      className="w-full relative py-32 z-10"
+      style={{ overflow: 'hidden' }}
     >
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <h2 style={{ 
-          textAlign: 'center', 
-          fontSize: '4rem', 
-          marginBottom: '60px',
-          textShadow: '4px 4px 0px #38501e',
-          textTransform: 'uppercase',
-          letterSpacing: '2px'
-        }}>
-          Server Rules
-        </h2>
+      <div className="max-w-5xl mx-auto px-4 flex flex-col gap-16 relative z-10">
         
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+        <div className="text-center">
+          <h2 className="mc-heading text-5xl md:text-7xl text-white drop-shadow-md mb-8" style={{ textShadow: '4px 4px 0px #38501e' }}>
+            Server Rules
+          </h2>
+          <p className="font-pixel text-xl text-gray-200 drop-shadow-sm max-w-2xl mx-auto leading-relaxed" style={{ textShadow: '2px 2px 0px black' }}>
+            Please read these rules carefully. Violations will result in a ban. Let's maintain a friendly and fair environment for everyone!
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 gap-12">
           {rules.map((rule, index) => (
             <div 
               key={rule.id}
               ref={el => rulesRef.current[index] = el}
+              className="mc-panel-wood p-8 md:p-10 flex flex-col md:flex-row items-center md:items-start gap-8"
               style={{
-                backgroundColor: 'rgba(0, 0, 0, 0.6)',
                 border: `4px solid ${rule.color}`,
-                borderRadius: '8px',
-                padding: '30px',
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '20px',
                 boxShadow: `inset 0 0 20px rgba(0,0,0,0.5), 8px 8px 0px rgba(0,0,0,0.3)`,
-                transformStyle: 'preserve-3d',
-                perspective: '1000px'
               }}
             >
-              <div style={{
-                fontSize: '4rem',
-                textShadow: '2px 2px 0px rgba(0,0,0,0.5)',
-                minWidth: '80px',
-                textAlign: 'center'
-              }}>
+              <div 
+                className="text-6xl md:text-7xl flex-shrink-0 flex items-center justify-center p-4 bg-black/40 rounded-lg border-2 border-black/50"
+                style={{ textShadow: '4px 4px 0px rgba(0,0,0,0.6)' }}
+              >
                 {rule.icon}
               </div>
-              <div>
-                <h3 style={{ 
-                  margin: '0 0 15px 0', 
-                  fontSize: '2rem',
-                  color: rule.color,
-                  textShadow: '2px 2px 0px black'
-                }}>
+              
+              <div className="flex-1 text-center md:text-left">
+                <h3 
+                  className="font-pixel text-3xl md:text-4xl mb-4"
+                  style={{ 
+                    color: rule.color,
+                    textShadow: '2px 2px 0px black'
+                  }}
+                >
                   {rule.id}. {rule.title}
                 </h3>
-                <p style={{ 
-                  margin: 0, 
-                  fontSize: '1.2rem', 
-                  lineHeight: '1.6',
-                  color: '#e0e0e0',
-                  textShadow: '1px 1px 0px black'
-                }}>
+                <p 
+                  className="font-pixel text-lg md:text-xl leading-relaxed text-[#e0e0e0]"
+                  style={{ textShadow: '1px 1px 0px black' }}
+                >
                   {rule.description}
                 </p>
               </div>

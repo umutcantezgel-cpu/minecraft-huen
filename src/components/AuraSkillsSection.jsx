@@ -39,30 +39,42 @@ export default function AuraSkillsSection() {
         const content = panel.querySelector('.skill-content');
         const iconBg = panel.querySelector('.skill-icon-bg');
         
-        gsap.from(content, {
-          y: 80,
-          opacity: 0,
-          scale: 0.9,
-          duration: 1,
-          scrollTrigger: {
-            trigger: panel,
-            containerAnimation: scrollTween,
-            start: "left center",
-            toggleActions: "play none none reverse"
+        // Deep scrub interactivity for the main content
+        gsap.fromTo(content, 
+          { y: 120, opacity: 0, scale: 0.85, rotation: -2 },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            rotation: 0,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: panel,
+              containerAnimation: scrollTween,
+              start: "left 85%",
+              end: "center center",
+              scrub: 1
+            }
           }
-        });
+        );
 
-        gsap.to(iconBg, {
-          rotate: 360,
-          scale: 1.2,
-          scrollTrigger: {
-            trigger: panel,
-            containerAnimation: scrollTween,
-            start: "left right",
-            end: "right left",
-            scrub: 0.5
+        // Continuous parallax and rotation for the background icon
+        gsap.fromTo(iconBg, 
+          { x: -150, rotate: -30, scale: 0.7, opacity: 0 },
+          {
+            x: 150,
+            rotate: 30,
+            scale: 1.2,
+            opacity: 0.1,
+            scrollTrigger: {
+              trigger: panel,
+              containerAnimation: scrollTween,
+              start: "left right",
+              end: "right left",
+              scrub: 1
+            }
           }
-        });
+        );
       });
     }, sectionRef);
 
@@ -93,8 +105,8 @@ export default function AuraSkillsSection() {
               alignItems: 'center',
               backgroundColor: skill.color,
               position: 'relative',
-              boxShadow: 'inset 0 0 150px rgba(0,0,0,0.9)',
-              borderRight: index < skills.length - 1 ? '10px solid #222' : 'none'
+              boxShadow: 'inset 0 0 200px rgba(0,0,0,0.9)',
+              borderRight: index < skills.length - 1 ? '8px solid #111' : 'none'
             }}
           >
             {/* Background giant icon */}
@@ -102,10 +114,10 @@ export default function AuraSkillsSection() {
               className="skill-icon-bg"
               style={{
                 position: 'absolute',
-                fontSize: '45vw',
-                opacity: 0.08,
+                fontSize: '40vw',
                 pointerEvents: 'none',
-                zIndex: 0
+                zIndex: 0,
+                filter: 'drop-shadow(20px 20px 0 rgba(0,0,0,0.5))'
               }}
             >
               {skill.icon}
@@ -113,90 +125,95 @@ export default function AuraSkillsSection() {
 
             {/* Main content box in Minecraft UI style */}
             <div 
-              className="skill-content"
+              className="skill-content mc-panel"
               style={{
-                backgroundColor: '#c6c6c6', // Classic Minecraft inventory gray
-                border: '6px solid',
-                borderColor: '#ffffff #555555 #555555 #ffffff',
-                padding: '40px',
+                padding: '40px 50px',
                 position: 'relative',
                 zIndex: 1,
-                width: '85%',
-                maxWidth: '650px',
-                boxShadow: '0 25px 60px rgba(0,0,0,0.6)',
-                color: '#333'
+                width: '90%',
+                maxWidth: '680px',
+                boxShadow: '0 30px 80px rgba(0,0,0,0.8)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '20px'
               }}
             >
-              <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-                <span style={{ fontSize: '90px', filter: 'drop-shadow(6px 6px 0 rgba(0,0,0,0.4))' }}>
-                  {skill.icon}
-                </span>
+              {/* Header section */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '30px', marginBottom: '10px' }}>
+                <div className="mc-panel-wood" style={{ padding: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <span style={{ fontSize: '64px', filter: 'drop-shadow(4px 4px 0 rgba(0,0,0,0.5))' }}>
+                    {skill.icon}
+                  </span>
+                </div>
+                <div>
+                  <h2 style={{
+                    fontSize: '48px',
+                    margin: '0 0 10px 0',
+                    color: '#ffff55', // Minecraft Yellow
+                    textShadow: '4px 4px 0 #3e3e15',
+                    textTransform: 'uppercase',
+                    letterSpacing: '2px',
+                    lineHeight: '1.1'
+                  }}>
+                    {skill.name}
+                  </h2>
+                  <h3 style={{
+                    fontSize: '24px',
+                    margin: '0',
+                    color: '#ffffff',
+                    textShadow: '3px 3px 0 #3f3f3f',
+                    letterSpacing: '1px'
+                  }}>
+                    {skill.title}
+                  </h3>
+                </div>
               </div>
-              
-              <h2 style={{
-                fontSize: '52px',
-                textAlign: 'center',
-                margin: '0 0 15px 0',
-                color: '#ffff55', // Minecraft Yellow
-                textShadow: '4px 4px 0 #3e3e15',
-                textTransform: 'uppercase',
-                letterSpacing: '3px'
-              }}>
-                {skill.name}
-              </h2>
-              
-              <h3 style={{
-                fontSize: '26px',
-                textAlign: 'center',
-                margin: '0 0 25px 0',
-                color: '#ffffff',
-                textShadow: '3px 3px 0 #3f3f3f',
-                letterSpacing: '1px'
-              }}>
-                {skill.title}
-              </h3>
 
-              <p style={{
-                fontSize: '20px',
-                lineHeight: '1.6',
-                textAlign: 'center',
-                backgroundColor: '#000000',
-                color: '#aaaaaa', // Minecraft lore text
-                padding: '25px',
-                border: '4px solid',
-                borderColor: '#373737 #8f8f8f #8f8f8f #373737',
-                margin: '0 0 40px 0'
-              }}>
-                {skill.desc}
-              </p>
+              {/* Description section */}
+              <div className="mc-panel-wood" style={{ padding: '25px' }}>
+                <p style={{
+                  fontSize: '20px',
+                  lineHeight: '1.6',
+                  color: '#aaaaaa', // Minecraft lore text
+                  margin: '0',
+                  textShadow: '2px 2px 0 #000'
+                }}>
+                  {skill.desc}
+                </p>
+              </div>
 
               {/* Progress Bar */}
-              <div style={{ width: '100%', position: 'relative' }}>
+              <div style={{ marginTop: '10px' }}>
                 <div style={{
                   display: 'flex',
                   justifyContent: 'space-between',
-                  marginBottom: '10px',
-                  color: '#000',
+                  marginBottom: '12px',
+                  color: '#ffffff',
                   fontWeight: 'bold',
-                  fontSize: '20px',
-                  textShadow: '1px 1px 0 rgba(255,255,255,0.3)'
+                  fontSize: '22px',
+                  textShadow: '3px 3px 0 #000'
                 }}>
                   <span>Level {index * 15 + 10}</span>
-                  <span>{1500 * (index + 1)} / {3000 * (index + 1)} XP</span>
+                  <span style={{ color: '#55ff55' }}>{1500 * (index + 1)} / {3000 * (index + 1)} XP</span>
                 </div>
+                
+                {/* Custom XP Bar */}
                 <div style={{
-                  height: '30px',
+                  height: '34px',
                   backgroundColor: '#000',
-                  border: '3px solid #555',
-                  padding: '3px'
+                  border: '3px solid #333',
+                  padding: '3px',
+                  boxShadow: 'inset 0 0 10px #000'
                 }}>
                   <div style={{
                     height: '100%',
                     width: '65%',
                     backgroundColor: '#55ff55', // Minecraft experience green
-                    borderRight: '3px solid #00aa00',
-                    borderBottom: '3px solid #00aa00',
-                    boxShadow: 'inset 0 0 10px rgba(0,255,0,0.5)'
+                    borderTop: '2px solid #aaffaa',
+                    borderRight: '2px solid #00aa00',
+                    borderBottom: '2px solid #00aa00',
+                    borderLeft: '2px solid #aaffaa',
+                    boxShadow: '0 0 15px rgba(85,255,85,0.4)'
                   }} />
                 </div>
               </div>
