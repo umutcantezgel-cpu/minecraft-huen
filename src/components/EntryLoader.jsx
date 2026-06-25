@@ -32,6 +32,7 @@ export default function EntryLoader({ onComplete }) {
   const [loading, setLoading] = useState(false);
   const [percentage, setPercentage] = useState(0);
   const containerRef = useRef(null);
+  const panoramaRef = useRef(null);
   const chunksRef = useRef([]);
 
   // Create a 15x15 chunk grid (authentic Java edition look)
@@ -64,6 +65,7 @@ export default function EntryLoader({ onComplete }) {
       }
     });
 
+    // Fade out welcome content
     tl.to(".welcome-content", {
       opacity: 0,
       y: -50,
@@ -71,11 +73,19 @@ export default function EntryLoader({ onComplete }) {
       ease: "power2.in"
     });
 
+    // Fade out panorama to reveal dirt
+    tl.to(panoramaRef.current, {
+      opacity: 0,
+      duration: 1,
+      ease: "power1.inOut"
+    }, "-=0.2");
+
+    // Fade in the loading text and grid container
     tl.to(".loading-content", {
       opacity: 1,
       duration: 0.5,
       ease: "power2.out"
-    });
+    }, "-=0.5");
 
     // Animate percentage
     tl.to({ val: 0 }, {
@@ -87,15 +97,14 @@ export default function EntryLoader({ onComplete }) {
       }
     }, "start");
 
-    // Animate chunks filling in (turning green)
-    // We animate a CSS variable or background color
+    // Animate chunks filling in (turning green with grass texture feel)
     tl.fromTo(chunksRef.current, 
-      { backgroundColor: "rgba(0, 0, 0, 0.4)" },
+      { backgroundColor: "rgba(0, 0, 0, 0.6)" },
       {
-        backgroundColor: "#7CFC00", // Bright Minecraft Grass green
-        duration: 0.1,
+        backgroundColor: "#71AF45", // Authentic Minecraft Grass top color
+        duration: 0.15,
         stagger: {
-          each: 0.01,
+          each: 0.015,
           from: "start"
         },
         ease: "none"
@@ -132,55 +141,72 @@ export default function EntryLoader({ onComplete }) {
         boxShadow: 'inset 0 0 150px rgba(0,0,0,0.8)'
       }}
     >
+      {/* PANORAMA LAYER */}
+      <div 
+        ref={panoramaRef} 
+        className="absolute inset-0 panorama-bg z-0 pointer-events-none"
+      />
+
       {/* INITIAL STATE: Welcome Screen */}
       {!loading && (
-        <div className="welcome-content relative z-10 text-center flex flex-col items-center">
-          <h1 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase drop-shadow-[0_4px_0_rgba(0,0,0,1)]">
-            Willkommen im<br/><span className="text-green-400">Huen Server</span>
-          </h1>
-          <p className="text-xl text-gray-300 mb-12 max-w-lg bg-black/40 p-4 border-[4px] border-black" style={{ textShadow: '2px 2px 0 #000' }}>
-            Bereit für das ultimative Survival-Erlebnis? Klicke auf 'Ja', um die Seite mit Musik und Animationen zu betreten.
-          </p>
+        <div className="welcome-content relative z-10 text-center flex flex-col items-center mt-12">
+          {/* Minecraft Style Logo Text */}
+          <div className="mb-8 relative">
+            <h1 
+              className="text-6xl md:text-[6rem] font-black text-white tracking-tighter uppercase"
+              style={{ textShadow: '4px 4px 0 #000, -4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000, 0 8px 0 #000' }}
+            >
+              HUEN <span className="text-[#55FF55]">SERVER</span>
+            </h1>
+          </div>
+
+          <div className="mc-panel p-6 mb-12 max-w-2xl bg-black/60 border-4 border-[#373737] shadow-[8px_8px_0_rgba(0,0,0,0.5)] backdrop-blur-sm">
+            <p className="text-xl text-gray-200 font-semibold" style={{ textShadow: '2px 2px 0 #000' }}>
+              Bereit für das ultimative Survival-Erlebnis? Klicke auf 'Spielen', um das System zu laden.
+            </p>
+          </div>
           
           <button 
             onClick={startLoading}
-            className="mc-btn flex items-center justify-center gap-4 px-16 py-6 text-3xl font-black text-white bg-green-600 hover:bg-green-500 hover:scale-105 transition-transform" 
-            style={{ textShadow: '2px 2px 0 #000' }}
+            className="mc-btn flex items-center justify-center gap-4 px-16 py-6 text-3xl font-black text-white bg-[#5E812F] hover:bg-[#71AF45] hover:scale-105 transition-transform" 
+            style={{ textShadow: '2px 2px 0 #000', boxShadow: 'inset 4px 4px 0 rgba(255,255,255,0.3), inset -4px -4px 0 rgba(0,0,0,0.4), 0 8px 0 rgba(0,0,0,0.6)' }}
           >
-            <Play className="fill-current w-8 h-8" />
-            JA, ICH BIN BEREIT
+            <Play className="fill-white w-8 h-8 drop-shadow-[2px_2px_0_rgba(0,0,0,1)]" />
+            SPIELEN
           </button>
         </div>
       )}
 
       {/* LOADING STATE: 2D Chunk Generation Map */}
-      <div className="loading-content absolute inset-0 flex flex-col items-center justify-center opacity-0 pointer-events-none">
+      <div className="loading-content absolute inset-0 flex flex-col items-center justify-center opacity-0 pointer-events-none z-10">
         
         {/* Texts */}
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 drop-shadow-[0_2px_0_rgba(0,0,0,1)] uppercase tracking-wider font-mc">
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 drop-shadow-[0_4px_0_rgba(0,0,0,1)] uppercase tracking-wider font-mc">
           Landschaft wird generiert...
         </h2>
-        <div className="text-xl text-white font-mc mb-12 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">
+        <div className="text-xl text-gray-300 font-bold mb-12 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">
           {percentage}%
         </div>
         
         {/* Java Edition Chunk Generation Grid */}
-        <div 
-          className="relative grid gap-0.5 p-1 bg-black/20"
-          style={{ 
-            gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`,
-            width: '240px',
-            height: '240px'
-          }}
-        >
-          {chunks.map((chunk, i) => (
-            <div 
-              key={chunk.id}
-              ref={setChunkRef}
-              className="w-full h-full"
-              style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
-            />
-          ))}
+        <div className="mc-panel p-2 bg-[#373737] border-4 border-[#1D1D1D] shadow-[8px_8px_0_rgba(0,0,0,0.5)]">
+          <div 
+            className="relative grid gap-0.5 bg-black"
+            style={{ 
+              gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`,
+              width: '240px',
+              height: '240px'
+            }}
+          >
+            {chunks.map((chunk, i) => (
+              <div 
+                key={chunk.id}
+                ref={setChunkRef}
+                className="w-full h-full mc-chunk"
+                style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}
+              />
+            ))}
+          </div>
         </div>
 
       </div>
