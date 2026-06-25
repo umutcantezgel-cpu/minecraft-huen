@@ -53,12 +53,12 @@ const EconomySection = () => {
       
       <div ref={containerRef} className="container mx-auto px-4 relative z-10 max-w-5xl">
         <div ref={titleRef} className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl text-mc-gold drop-shadow-mc mb-6 tracking-wider">
-            Spielergesteuerte Wirtschaft
+          <h2 className="text-4xl md:text-5xl lg:text-6xl text-mc-gold drop-shadow-mc mb-6 tracking-wider">
+            Unsere kleine Wirtschaft
           </h2>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto drop-shadow-md">
-            Schmiede deinen eigenen Weg zum Reichtum. Unsere maßgeschneiderte Wirtschaft wurde von Grund auf so aufgebaut, dass sie 
-            Hingabe, Kreativität und Handelsgeschick belohnt.
+          <p className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto drop-shadow-md px-4">
+            Wir haben ein simples, faires Wirtschaftssystem. Verdiene dir etwas dazu, handle mit anderen 
+            aus der Gruppe und baue dir einen kleinen Shop auf!
           </p>
         </div>
 
@@ -69,10 +69,10 @@ const EconomySection = () => {
             className="mc-panel-dirt p-8 text-center transform transition-transform duration-300 hover:scale-105"
           >
             <div className="text-4xl mb-6 drop-shadow-mc text-mc-emerald">💎</div>
-            <h3 className="text-2xl text-white mb-4 drop-shadow-md">Dynamische Märkte</h3>
+            <h3 className="text-xl md:text-2xl text-white mb-4 drop-shadow-md">Faires Handeln</h3>
             <p className="text-gray-200 leading-relaxed text-sm">
-              Preise schwanken basierend auf Angebot und Nachfrage. Nutze Engpässe aus, monopolisiere Ressourcen, 
-              und baue dein Handelsimperium auf.
+              Tausche Items direkt mit deinen Freunden. Jeder hilft jedem, aber natürlich 
+              kannst du für seltene Items auch mal einen guten Preis verlangen.
             </p>
           </div>
 
@@ -82,10 +82,10 @@ const EconomySection = () => {
             className="mc-panel p-8 text-center transform transition-transform duration-300 hover:scale-105"
           >
             <div className="text-4xl mb-6 drop-shadow-mc text-mc-gold">⚔️</div>
-            <h3 className="text-2xl text-white mb-4 drop-shadow-md">Kopfgeld-System</h3>
+            <h3 className="text-xl md:text-2xl text-white mb-4 drop-shadow-md">Belohnungen</h3>
             <p className="text-gray-200 leading-relaxed text-sm">
-              Setze Kopfgelder auf Rivalen aus oder kassiere sie, um Geld zu verdienen. Die Wildnis ist gefährlich, 
-              aber dort wird das wahre Geld gemacht.
+              Erledige Aufgaben oder besiege Monster, um ein bisschen Ingame-Geld zu verdienen. 
+              Ganz entspannt, ohne Stress oder Pay2Win.
             </p>
           </div>
 
@@ -95,10 +95,10 @@ const EconomySection = () => {
             className="mc-panel-dirt p-8 text-center transform transition-transform duration-300 hover:scale-105"
           >
             <div className="text-4xl mb-6 drop-shadow-mc text-mc-light">🏪</div>
-            <h3 className="text-2xl text-white mb-4 drop-shadow-md">Spieler-Shops</h3>
+            <h3 className="text-xl md:text-2xl text-white mb-4 drop-shadow-md">Kleine Shops</h3>
             <p className="text-gray-200 leading-relaxed text-sm">
-              Miete Stände im großen Basar oder errichte versteckte Außenposten. Du kontrollierst das Inventar, 
-              du kontrollierst die Preise.
+              Erstelle Truhen-Shops in deiner Basis, damit die Huen-Gruppe bei dir einkaufen 
+              kann, auch wenn du mal offline bist.
             </p>
           </div>
         </div>

@@ -69,7 +69,7 @@ export default function MinecraftHero() {
       <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center mt-12">
         <h1 
           ref={titleRef}
-          className="text-7xl md:text-[9rem] font-black text-white tracking-tighter drop-shadow-2xl mb-6 uppercase"
+          className="text-5xl md:text-[9rem] font-black text-white tracking-tighter drop-shadow-2xl mb-6 uppercase"
           style={{ 
             textShadow: '4px 4px 0 #000, -4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000, 0 8px 0 #000',
           }}
@@ -79,7 +79,7 @@ export default function MinecraftHero() {
         
         <div ref={subtitleRef} className="mc-panel mb-16 max-w-3xl p-6">
           <p className="text-2xl md:text-4xl font-bold text-white text-center" style={{ textShadow: '2px 2px 0 #000' }}>
-            Das ultimative Survival-Erlebnis erwartet dich. Bauen, erkunden und gemeinsam erobern.
+            Ein komplett kostenloser, privater Server für die Huen Gruppe. Kommt vorbei, ich freue mich auf euch!
           </p>
         </div>
 
@@ -104,17 +104,12 @@ export default function MinecraftHero() {
           </button>
         </div>
 
-        {/* Server Stats */}
-        <div ref={statsRef} className="flex flex-wrap justify-center gap-6 md:gap-12">
-          <div className="mc-panel flex flex-col items-center px-10 py-8 min-w-[240px] transform transition-transform hover:scale-105">
-            <Users className="w-12 h-12 text-blue-400 mb-4 drop-shadow-[2px_2px_0_#000]" />
-            <span className="text-5xl font-black text-white mb-2 drop-shadow-[2px_2px_0_#000]">1,204</span>
-            <span className="text-zinc-200 font-bold uppercase tracking-widest text-sm drop-shadow-[1px_1px_0_#000]">Spieler online</span>
-          </div>
-          <div className="mc-panel flex flex-col items-center px-10 py-8 min-w-[240px] transform transition-transform hover:scale-105">
-            <Server className="w-12 h-12 text-green-400 mb-4 drop-shadow-[2px_2px_0_#000]" />
-            <span className="text-5xl font-black text-white mb-2 drop-shadow-[2px_2px_0_#000]">99.9%</span>
-            <span className="text-zinc-200 font-bold uppercase tracking-widest text-sm drop-shadow-[1px_1px_0_#000]">Server-Laufzeit</span>
+        {/* Invitation Message */}
+        <div ref={statsRef} className="flex justify-center mt-12 px-4">
+          <div className="mc-panel p-6 text-center max-w-2xl">
+            <p className="text-xl md:text-2xl text-yellow-400 font-bold drop-shadow-md">
+              👋 Wir stehen noch ganz am Anfang und der Server ist frisch aufgesetzt. Schnapp dir deine Freunde und sei einer der Ersten!
+            </p>
           </div>
         </div>
       </div>

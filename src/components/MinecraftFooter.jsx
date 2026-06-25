@@ -38,7 +38,7 @@ export default function MinecraftFooter() {
             MC Network
           </h2>
           <p className="text-[#AAAAAA] leading-relaxed mb-4 text-sm text-shadow-mc">
-            Das ultimative Minecraft-Survival-Erlebnis. Baue, erkunde und erobere in einer Welt ohne Grenzen. Schließe dich noch heute Tausenden von Spielern an!
+            Ein gemütlicher privater Server für die Huen Gruppe. Kommt vorbei, wir freuen uns auf euch!
           </p>
           <div className="flex space-x-4">
             <a href="#" className="mc-btn px-4 py-2 text-white">
@@ -55,9 +55,7 @@ export default function MinecraftFooter() {
           <h3 className="text-xl font-bold mb-4 text-[#FFAA00] text-shadow-mc font-pixel">Navigation</h3>
           <ul className="space-y-2 text-gray-300">
             <li><a href="#" className="hover:text-[#55FF55] transition-colors flex items-center gap-2 text-shadow-mc"><span className="text-[#555555]">&gt;</span> Startseite</a></li>
-            <li><a href="#" className="hover:text-[#55FF55] transition-colors flex items-center gap-2 text-shadow-mc"><span className="text-[#555555]">&gt;</span> Shop</a></li>
             <li><a href="#" className="hover:text-[#55FF55] transition-colors flex items-center gap-2 text-shadow-mc"><span className="text-[#555555]">&gt;</span> Regeln</a></li>
-            <li><a href="#" className="hover:text-[#55FF55] transition-colors flex items-center gap-2 text-shadow-mc"><span className="text-[#555555]">&gt;</span> Abstimmen</a></li>
             <li><a href="#" className="hover:text-[#55FF55] transition-colors flex items-center gap-2 text-shadow-mc"><span className="text-[#555555]">&gt;</span> Team</a></li>
           </ul>
         </div>
@@ -66,9 +64,7 @@ export default function MinecraftFooter() {
         <div className="footer-element">
           <h3 className="text-xl font-bold mb-4 text-[#FFAA00] text-shadow-mc font-pixel">Support</h3>
           <ul className="space-y-2 text-gray-300">
-            <li><a href="#" className="hover:text-[#55FF55] transition-colors flex items-center gap-2 text-shadow-mc"><span className="text-[#555555]">&gt;</span> Hilfe-Center</a></li>
-            <li><a href="#" className="hover:text-[#55FF55] transition-colors flex items-center gap-2 text-shadow-mc"><span className="text-[#555555]">&gt;</span> Entbannungsantrag</a></li>
-            <li><a href="#" className="hover:text-[#55FF55] transition-colors flex items-center gap-2 text-shadow-mc"><span className="text-[#555555]">&gt;</span> Spieler melden</a></li>
+            <li><a href="#" className="hover:text-[#55FF55] transition-colors flex items-center gap-2 text-shadow-mc"><span className="text-[#555555]">&gt;</span> Hilfe & Fragen</a></li>
             <li><a href="#" className="hover:text-[#55FF55] transition-colors flex items-center gap-2 text-shadow-mc"><span className="text-[#555555]">&gt;</span> Kontakt</a></li>
           </ul>
         </div>
@@ -86,10 +82,9 @@ export default function MinecraftFooter() {
       
       {/* Copyright Bar */}
       <div className="max-w-6xl mx-auto mt-12 pt-8 border-t-4 border-[#373737] text-center text-sm text-[#AAAAAA] flex flex-col md:flex-row justify-between items-center relative z-10 footer-element">
-        <p className="text-shadow-mc font-pixel">&copy; {new Date().getFullYear()} MC Network. Nicht mit Mojang AB verbunden.</p>
+        <p className="text-shadow-mc font-pixel">Made with ❤️ for the Huen group.</p>
         <div className="flex space-x-4 mt-4 md:mt-0 font-bold">
-          <a href="#" className="hover:text-white transition-colors text-shadow-mc">Nutzungsbedingungen</a>
-          <a href="#" className="hover:text-[#55FF55] transition-colors text-shadow-mc">Datenschutzrichtlinie</a>
+          <span className="text-shadow-mc">Privater Community Server</span>
         </div>
       </div>
     </footer>

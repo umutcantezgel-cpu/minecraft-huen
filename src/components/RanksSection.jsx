@@ -6,32 +6,32 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ranks = [
   {
-    name: "Eisen",
-    price: "$4.99/Monat",
+    name: "Neuling",
+    price: "Kostenlos",
     bgClass: "bg-[#e5e5e5]",
     borderClass: "border-[#ffffff] border-b-[#8b8b8b] border-r-[#8b8b8b]",
     textClass: "text-[#333333]",
     perks: ["Benutzerdefiniertes Präfix", "/fly im Hub", "1 Home", "Weiße Chatfarbe"],
   },
   {
-    name: "Gold",
-    price: "$9.99/Monat",
+    name: "Stammspieler",
+    price: "Nach 10h Spielzeit",
     bgClass: "bg-[#fcefa1]",
     borderClass: "border-[#fdf5c3] border-b-[#d6b738] border-r-[#d6b738]",
     textClass: "text-[#7a5800]",
     perks: ["Alles von Eisen", "Warteschlangen-Priorität", "3 Homes", "Gelbe Chatfarbe", "Zugriff auf /kit gold"],
   },
   {
-    name: "Diamant",
-    price: "$19.99/Monat",
+    name: "Veteran",
+    price: "Nach 100h Spielzeit",
     bgClass: "bg-[#6bebe4]",
     borderClass: "border-[#a5f4f0] border-b-[#32a49f] border-r-[#32a49f]",
     textClass: "text-[#0d5955]",
     perks: ["Alles von Gold", "/nick Befehl", "5 Homes", "Türkise Chatfarbe", "Zugriff auf /kit diamond", "Eigene Beitrittsnachricht"],
   },
   {
-    name: "Smaragd",
-    price: "$39.99/Monat",
+    name: "Huen Legende",
+    price: "Gruppen-Mitglied",
     bgClass: "bg-[#41f384]",
     borderClass: "border-[#85f8b2] border-b-[#26ad55] border-r-[#26ad55]",
     textClass: "text-[#0a4720]",
@@ -116,7 +116,7 @@ export default function RanksSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div ref={titleRef} className="text-center mb-24">
           <h2 
-            className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-[#ffff55] to-[#ffaa00] mb-6 inline-block" 
+            className="text-4xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-[#ffff55] to-[#ffaa00] mb-6 inline-block" 
             style={{ 
               WebkitTextStroke: '3px #3e2800', 
               filter: 'drop-shadow(4px 4px 0px #000)',
@@ -124,10 +124,10 @@ export default function RanksSection() {
               letterSpacing: '2px'
             }}
           >
-            Server Ränge
+            Server Rollen
           </h2>
-          <p className="text-xl md:text-2xl text-[#dddddd] font-bold max-w-2xl mx-auto drop-shadow-[2px_2px_0px_#000]">
-            Unterstütze den Server. Sichere dir epische Vorteile. Werde zur Legende.
+          <p className="text-lg md:text-xl lg:text-2xl text-[#dddddd] font-bold max-w-2xl mx-auto drop-shadow-[2px_2px_0px_#000] px-4">
+            Wir sind komplett kostenlos. Spiele aktiv, hilf anderen und schalte coole Ränge frei!
           </p>
         </div>
 
@@ -146,12 +146,12 @@ export default function RanksSection() {
                     
                     <div className="text-center mb-6 pb-6 border-b-4 border-black/10">
                       <h3 
-                        className={`text-4xl font-black uppercase mb-3 ${rank.textClass} drop-shadow-[2px_2px_0px_rgba(255,255,255,0.4)]`}
+                        className={`text-2xl md:text-3xl lg:text-4xl font-black uppercase mb-3 ${rank.textClass} drop-shadow-[2px_2px_0px_rgba(255,255,255,0.4)] break-words`}
                         style={{ letterSpacing: '1px' }}
                       >
                         {rank.name}
                       </h3>
-                      <div className={`text-2xl font-black ${rank.textClass} opacity-80 bg-black/10 inline-block px-4 py-1 border-2 border-black/20`}>
+                      <div className={`text-xl md:text-2xl font-black ${rank.textClass} opacity-80 bg-black/10 inline-block px-4 py-1 border-2 border-black/20 break-words`}>
                         {rank.price}
                       </div>
                     </div>
