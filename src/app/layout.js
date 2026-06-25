@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Huen Ecosystem // Closed Alpha",
+  title: "Huen Server // Closed Alpha",
   description: "Ein privater Community Server. Slimefun, Magic, AuraSkills & mehr.",
 };
 

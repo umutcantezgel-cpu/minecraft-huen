@@ -72,7 +72,7 @@ export default function MinecraftHero() {
             textShadow: '4px 4px 0 #000, -4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000, 0 8px 0 #000',
           }}
         >
-          HUEN<br/><span className="text-green-400 text-4xl md:text-7xl">ECOSYSTEM</span>
+          HUEN<br/><span className="text-green-400 text-4xl md:text-7xl">SERVER</span>
         </h1>
 
         <div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 mb-24 mt-16">

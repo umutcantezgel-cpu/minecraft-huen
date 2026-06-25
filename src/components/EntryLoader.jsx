@@ -136,7 +136,7 @@ export default function EntryLoader({ onComplete }) {
       {!loading && (
         <div className="welcome-content relative z-10 text-center flex flex-col items-center">
           <h1 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase drop-shadow-[0_4px_0_rgba(0,0,0,1)]">
-            Willkommen im<br/><span className="text-green-400">Huen Ecosystem</span>
+            Willkommen im<br/><span className="text-green-400">Huen Server</span>
           </h1>
           <p className="text-xl text-gray-300 mb-12 max-w-lg bg-black/40 p-4 border-[4px] border-black" style={{ textShadow: '2px 2px 0 #000' }}>
             Bereit für das ultimative Survival-Erlebnis? Klicke auf 'Ja', um die Seite mit Musik und Animationen zu betreten.

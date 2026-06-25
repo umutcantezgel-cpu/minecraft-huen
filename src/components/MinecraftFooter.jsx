@@ -35,7 +35,7 @@ export default function MinecraftFooter() {
         {/* Brand / About */}
         <div className="col-span-1 md:col-span-1 footer-element">
           <h2 className="text-3xl font-bold mb-4 text-[#55FF55] text-shadow-mc tracking-wide font-pixel">
-            Huen Ecosystem
+            Huen Server
           </h2>
           <p className="text-[#AAAAAA] leading-relaxed mb-4 text-sm text-shadow-mc">
             Ein gemütlicher privater Server für die Huen Gruppe. Kommt vorbei, wir freuen uns auf euch!
