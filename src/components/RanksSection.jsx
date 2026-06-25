@@ -165,12 +165,7 @@ export default function RanksSection() {
                       ))}
                     </ul>
 
-                    <button 
-                      className="w-full py-4 px-4 bg-[#444444] hover:bg-[#555555] text-white font-black text-2xl uppercase border-[4px] border-[#222222] border-t-[#777777] border-l-[#777777] active:border-b-[#777777] active:border-r-[#777777] active:border-t-[#222222] active:border-l-[#222222] transition-none shadow-[4px_4px_0px_rgba(0,0,0,0.3)]" 
-                      style={{ textShadow: "2px 2px 0 #000" }}
-                    >
-                      Auswählen
-                    </button>
+
                   </div>
                 </div>
               </div>

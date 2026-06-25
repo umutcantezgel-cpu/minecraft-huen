@@ -83,7 +83,7 @@ const LoreSection = () => {
             <p className="text-sm leading-relaxed flex-1">
               Jetzt vereinen sich die Server wieder. Eine neue Generation von Spielern tritt hervor 
               und bringt das Wissen der Ahnen und die Innovationen der Moderne mit sich. 
-              Das NextGen Server Event markiert den Beginn dieses neuen Kapitels. Wirst du dem Ruf folgen?
+              Das Huen Event markiert den Beginn dieses neuen Kapitels. Wirst du dem Ruf folgen?
             </p>
             <div className="flex-shrink-0">
               <div className="w-16 h-16 bg-[#333] border-4 border-[#555] flex items-center justify-center">

@@ -74,7 +74,7 @@ export default function MinecraftHero() {
             textShadow: '4px 4px 0 #000, -4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000, 0 8px 0 #000',
           }}
         >
-          CRAFT<span className="text-green-400">MC</span>
+          HUEN<br/><span className="text-green-400 text-4xl md:text-7xl">ECOSYSTEM</span>
         </h1>
         
         <div ref={subtitleRef} className="mc-panel mb-16 max-w-3xl p-6">
@@ -92,16 +92,38 @@ export default function MinecraftHero() {
             Jetzt spielen
           </button>
           
-          <button 
-            onClick={() => {
-              navigator.clipboard.writeText('Umutcan_Emre.exaroton.me:28198');
-              alert('IP kopiert: Umutcan_Emre.exaroton.me:28198');
-            }}
-            className="mc-btn flex items-center justify-center gap-4 px-12 py-6 text-2xl font-black text-white" style={{ textShadow: '2px 2px 0 #000' }}
-          >
-            <Server className="w-8 h-8" />
-            IP kopieren
-          </button>
+          <div className="flex flex-col gap-2">
+            <button 
+              onClick={() => {
+                navigator.clipboard.writeText('Umutcan_Emre.exaroton.me:28198');
+                alert('PC IP kopiert: Umutcan_Emre.exaroton.me:28198');
+              }}
+              className="mc-btn flex items-center justify-center gap-4 px-8 py-3 text-lg font-black text-white bg-blue-600 hover:bg-blue-500" style={{ textShadow: '1px 1px 0 #000' }}
+            >
+              <Server className="w-6 h-6" />
+              PC (Java) kopieren
+            </button>
+            <div className="flex gap-2">
+              <button 
+                onClick={() => {
+                  navigator.clipboard.writeText('Umutcan_Emre.exaroton.me');
+                  alert('Konsolen IP kopiert: Umutcan_Emre.exaroton.me');
+                }}
+                className="mc-btn flex items-center justify-center gap-2 px-4 py-3 text-sm font-black text-white flex-1" style={{ textShadow: '1px 1px 0 #000' }}
+              >
+                Konsole IP
+              </button>
+              <button 
+                onClick={() => {
+                  navigator.clipboard.writeText('28198');
+                  alert('Port kopiert: 28198');
+                }}
+                className="mc-btn flex items-center justify-center gap-2 px-4 py-3 text-sm font-black text-white bg-gray-600 hover:bg-gray-500" style={{ textShadow: '1px 1px 0 #000' }}
+              >
+                Port
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Invitation Message */}

@@ -88,12 +88,13 @@ export default function WorldSection() {
           <div className="absolute inset-0 flex flex-col items-center justify-center mb-40 px-4">
             {/* Minecraft Style Panel */}
             <div className="bg-[#C6C6C6] border-[6px] border-black shadow-[inset_-6px_-6px_0_rgba(85,85,85,1),inset_6px_6px_0_rgba(255,255,255,1),8px_8px_0_rgba(0,0,0,0.25)] p-10 max-w-3xl text-center">
-              <h2 className="text-5xl md:text-6xl text-[#333333] font-bold tracking-widest uppercase mb-6 drop-shadow-[3px_3px_0_rgba(255,255,255,1)]">
-                Die Oberwelt
+              <h2 className="text-4xl md:text-6xl text-[#333333] font-bold tracking-widest uppercase mb-6 drop-shadow-[3px_3px_0_rgba(255,255,255,1)]">
+                [01] Slimefun 4
               </h2>
               <div className="h-1.5 w-full bg-[#555555] mb-6 border-b-[3px] border-white"></div>
+              <h3 className="text-2xl text-blue-800 font-bold mb-4">Industrielle Revolution</h3>
               <p className="text-xl md:text-2xl text-[#222222] font-semibold leading-relaxed">
-                Betrete eine weitläufige Landschaft aus üppigen Wäldern, aufragenden Bergen und tiefen Schluchten. Sammle Ressourcen, baue Feldfrüchte an und überlebe die Nacht.
+                Über 500 neue Items. Automatische Fabriken, logistische Frachtnetze und Reaktoren.
               </p>
             </div>
           </div>
@@ -116,12 +117,13 @@ export default function WorldSection() {
           <div className="absolute inset-0 flex flex-col items-center justify-center mb-40 px-4">
             {/* Dirt Style Panel */}
             <div className="bg-[#8B5A2B] border-[6px] border-black shadow-[inset_-6px_-6px_0_rgba(90,58,26,1),inset_6px_6px_0_rgba(166,124,82,1),8px_8px_0_rgba(0,0,0,0.3)] p-10 max-w-3xl text-center">
-              <h2 className="text-5xl md:text-6xl text-white font-bold tracking-widest uppercase mb-6 drop-shadow-[3px_3px_0_rgba(0,0,0,1)]">
-                Baue deine Basis
+              <h2 className="text-4xl md:text-6xl text-white font-bold tracking-widest uppercase mb-6 drop-shadow-[3px_3px_0_rgba(0,0,0,1)]">
+                [02] Magic
               </h2>
               <div className="h-1.5 w-full bg-[#5A3A1A] mb-6 border-b-[3px] border-[#A67C52]"></div>
+              <h3 className="text-2xl text-purple-300 font-bold mb-4 drop-shadow-[1px_1px_0_rgba(0,0,0,0.8)]">Aktive Kampfmagie</h3>
               <p className="text-xl md:text-2xl text-[#F0E6D2] font-semibold leading-relaxed mb-8 drop-shadow-[2px_2px_0_rgba(0,0,0,0.8)]">
-                Von bescheidenen Erdhütten bis hin zu riesigen Redstone-Konstruktionen. Deine Fantasie ist die einzige Grenze.
+                Schmiedet Zauberstäbe und lernt aktive Spells wie Telekinese, Partikel-Schilde oder Schwerkraft-Manipulation.
               </p>
               <div className="flex justify-center gap-8">
                 {/* Stone Block */}
@@ -159,12 +161,13 @@ export default function WorldSection() {
             <div className="bg-[#600000] border-[6px] border-black shadow-[inset_-6px_-6px_0_rgba(48,0,0,1),inset_6px_6px_0_rgba(138,0,0,1),8px_8px_0_rgba(0,0,0,0.8)] p-10 max-w-3xl text-center relative overflow-hidden">
               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_#AA00FF_0%,_transparent_100%)] mix-blend-screen" />
               
-              <h2 className="text-5xl md:text-6xl text-[#FF5555] font-bold tracking-widest uppercase mb-6 drop-shadow-[3px_3px_0_rgba(0,0,0,1)] relative z-10">
-                Der Nether
+              <h2 className="text-4xl md:text-6xl text-[#FF5555] font-bold tracking-widest uppercase mb-6 drop-shadow-[3px_3px_0_rgba(0,0,0,1)] relative z-10">
+                [03] AuraSkills
               </h2>
               <div className="h-1.5 w-full bg-[#300000] mb-6 border-b-[3px] border-[#8A0000] relative z-10"></div>
+              <h3 className="text-2xl text-yellow-400 font-bold mb-4 drop-shadow-[1px_1px_0_rgba(0,0,0,0.8)] relative z-10">MMO Progression</h3>
               <p className="text-xl md:text-2xl text-[#FFAAAA] font-semibold leading-relaxed relative z-10 drop-shadow-[2px_2px_0_rgba(0,0,0,0.8)]">
-                Eine Höllenlandschaft aus Feuer, Lava und gefährlichen Mobs. Baue antiken Schutt ab und trotze den Festungen, um seltene Beute zu sammeln.
+                Jede Aktion levelt dich auf. Schalte permanente extra Herzen, kritischen Schaden und passive Buffs frei.
               </p>
             </div>
           </div>
@@ -192,12 +195,13 @@ export default function WorldSection() {
           <div className="absolute inset-0 flex flex-col items-center justify-center mb-40 px-4">
             {/* End Style Panel */}
             <div className="bg-[#1A1A1A] border-[6px] border-[#333333] shadow-[inset_-6px_-6px_0_rgba(0,0,0,0.8),inset_6px_6px_0_rgba(255,255,255,0.1),8px_8px_0_rgba(0,0,0,1)] p-10 max-w-3xl text-center border-t-[#8B00FF] border-t-[12px]">
-              <h2 className="text-5xl md:text-6xl text-[#EEDDFF] font-bold tracking-widest uppercase mb-6 drop-shadow-[3px_3px_0_rgba(139,0,255,0.8)]">
-                Das Ende
+              <h2 className="text-4xl md:text-6xl text-[#EEDDFF] font-bold tracking-widest uppercase mb-6 drop-shadow-[3px_3px_0_rgba(139,0,255,0.8)]">
+                [04] GSit
               </h2>
               <div className="h-1.5 w-full bg-[#000000] mb-6 border-b-[3px] border-[#333333]"></div>
+              <h3 className="text-2xl text-green-400 font-bold mb-4 drop-shadow-[1px_1px_0_rgba(0,0,0,0.8)]">Social & Trolling</h3>
               <p className="text-xl md:text-2xl text-[#D0C0E0] font-semibold leading-relaxed mb-10 drop-shadow-[2px_2px_0_rgba(0,0,0,0.8)]">
-                Stelle dich dem Enderdrachen in der kargen Leere. Erringe den ultimativen Sieg und erobere die Lüfte mit den Elytren.
+                Setzt euch gegenseitig auf den Kopf, tragt eure Mates Huckepack oder nutzt /crawl, um flach auf dem Bauch durch die Basis zu spionieren.
               </p>
               
               <div className="flex justify-center">
