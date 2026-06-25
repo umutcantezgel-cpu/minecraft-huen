@@ -99,6 +99,7 @@ function Voxel({ color, size, top, left, right, delay, opacity = 0.5, dur = 9 })
 /* ============================ DECK ============================ */
 export default function App() {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [hasEntered, setHasEntered] = useState(false);
   const audioRef = useRef(null);
 
   const toggleAudio = () => {
@@ -112,10 +113,48 @@ export default function App() {
     }
   };
 
+  const enterSite = () => {
+    if (audioRef.current) {
+      audioRef.current.play().catch(e => console.error(e));
+      setIsPlaying(true);
+    }
+    setHasEntered(true);
+  };
+
   return (
-    <div style={{ background: C.bg, fontFamily: FONT_BODY, color: C.text, minHeight: "100vh", width: "100%" }}>
+    <>
+      {/* ENTRY OVERLAY */}
+      <div style={{
+        position: "fixed", inset: 0, zIndex: 9999, background: C.bg, display: "flex", flexDirection: "column",
+        alignItems: "center", justifyContent: "center", opacity: hasEntered ? 0 : 1, pointerEvents: hasEntered ? "none" : "all",
+        transition: "opacity 1.2s cubic-bezier(0.2, 0.7, 0.2, 1)", fontFamily: FONT_DISPLAY
+      }}>
+        <div style={{ transform: hasEntered ? "scale(1.1)" : "scale(1)", transition: "transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1)", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <h1 style={{ fontSize: 42, md: { fontSize: 64 }, fontWeight: 700, marginBottom: 16, letterSpacing: "0.05em", color: C.text, textShadow: glow(C.cyan) }}>BIST DU BEREIT?</h1>
+          <p style={{ fontFamily: FONT_BODY, color: C.sub, marginBottom: 40, fontSize: 18, textAlign: "center", maxWidth: 400 }}>Das ultimative Minecraft Erlebnis startet jetzt. Hintergrundmusik wird empfohlen.</p>
+          <button 
+            onClick={enterSite} 
+            style={{ background: C.emerald, color: C.bg, border: `2px solid ${C.emerald}`, padding: "18px 48px", fontSize: 20, fontWeight: 800, borderRadius: 999, cursor: "pointer", boxShadow: glow(C.emerald, 0.4), transition: "all 0.3s", letterSpacing: "0.05em" }}
+            onMouseEnter={(e) => { e.target.style.transform = "scale(1.05)"; e.target.style.boxShadow = glow(C.emerald, 0.6); }}
+            onMouseLeave={(e) => { e.target.style.transform = "scale(1)"; e.target.style.boxShadow = glow(C.emerald, 0.4); }}
+          >
+            JA, JOINEN
+          </button>
+        </div>
+      </div>
+
+      {/* AUDIO ELEMENT */}
+      <audio ref={audioRef} loop src="./C418 - Subwoofer Lullaby - Minecraft Volume Alpha.mp3" />
+
+      {/* MAIN APP CONTAINER */}
+      <div style={{ 
+        background: C.bg, fontFamily: FONT_BODY, color: C.text, minHeight: "100vh", width: "100%", 
+        height: hasEntered ? "auto" : "100vh", overflow: hasEntered ? "visible" : "hidden",
+        opacity: hasEntered ? 1 : 0, transition: "opacity 1.5s ease-in-out 0.2s"
+      }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+        html { scroll-behavior: smooth; }
         * { box-sizing: border-box; }
         .deck { max-width: 940px; margin: 0 auto; position: relative; }
         .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -159,7 +198,6 @@ export default function App() {
             {isPlaying ? "C418 - Subwoofer Lullaby" : "Play Music"}
           </span>
         </button>
-        <audio ref={audioRef} loop src="./C418 - Subwoofer Lullaby - Minecraft Volume Alpha.mp3" />
       </div>
 
       <div
@@ -288,7 +326,8 @@ export default function App() {
           </footer>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 
