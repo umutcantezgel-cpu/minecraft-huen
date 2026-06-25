@@ -6,36 +6,36 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ranks = [
   {
-    name: "Iron",
-    price: "$4.99/mo",
+    name: "Eisen",
+    price: "$4.99/Monat",
     bgClass: "bg-[#e5e5e5]",
     borderClass: "border-[#ffffff] border-b-[#8b8b8b] border-r-[#8b8b8b]",
     textClass: "text-[#333333]",
-    perks: ["Custom Prefix", "/fly in hub", "1 Home", "White Chat Color"],
+    perks: ["Benutzerdefiniertes Präfix", "/fly im Hub", "1 Home", "Weiße Chatfarbe"],
   },
   {
     name: "Gold",
-    price: "$9.99/mo",
+    price: "$9.99/Monat",
     bgClass: "bg-[#fcefa1]",
     borderClass: "border-[#fdf5c3] border-b-[#d6b738] border-r-[#d6b738]",
     textClass: "text-[#7a5800]",
-    perks: ["Everything in Iron", "Priority Queue", "3 Homes", "Yellow Chat Color", "Access to /kit gold"],
+    perks: ["Alles von Eisen", "Warteschlangen-Priorität", "3 Homes", "Gelbe Chatfarbe", "Zugriff auf /kit gold"],
   },
   {
-    name: "Diamond",
-    price: "$19.99/mo",
+    name: "Diamant",
+    price: "$19.99/Monat",
     bgClass: "bg-[#6bebe4]",
     borderClass: "border-[#a5f4f0] border-b-[#32a49f] border-r-[#32a49f]",
     textClass: "text-[#0d5955]",
-    perks: ["Everything in Gold", "/nick command", "5 Homes", "Cyan Chat Color", "Access to /kit diamond", "Custom Join Message"],
+    perks: ["Alles von Gold", "/nick Befehl", "5 Homes", "Türkise Chatfarbe", "Zugriff auf /kit diamond", "Eigene Beitrittsnachricht"],
   },
   {
-    name: "Emerald",
-    price: "$39.99/mo",
+    name: "Smaragd",
+    price: "$39.99/Monat",
     bgClass: "bg-[#41f384]",
     borderClass: "border-[#85f8b2] border-b-[#26ad55] border-r-[#26ad55]",
     textClass: "text-[#0a4720]",
-    perks: ["Everything in Diamond", "Unlimited Homes", "Green Chat Color", "Access to /kit emerald", "Private Vault", "Exclusive Cosmetics"],
+    perks: ["Alles von Diamant", "Unbegrenzte Homes", "Grüne Chatfarbe", "Zugriff auf /kit emerald", "Privater Tresor", "Exklusive Kosmetika"],
   }
 ];
 
@@ -124,10 +124,10 @@ export default function RanksSection() {
               letterSpacing: '2px'
             }}
           >
-            Server Ranks
+            Server Ränge
           </h2>
           <p className="text-xl md:text-2xl text-[#dddddd] font-bold max-w-2xl mx-auto drop-shadow-[2px_2px_0px_#000]">
-            Support the server. Claim epic perks. Become a legend.
+            Unterstütze den Server. Sichere dir epische Vorteile. Werde zur Legende.
           </p>
         </div>
 
@@ -169,7 +169,7 @@ export default function RanksSection() {
                       className="w-full py-4 px-4 bg-[#444444] hover:bg-[#555555] text-white font-black text-2xl uppercase border-[4px] border-[#222222] border-t-[#777777] border-l-[#777777] active:border-b-[#777777] active:border-r-[#777777] active:border-t-[#222222] active:border-l-[#222222] transition-none shadow-[4px_4px_0px_rgba(0,0,0,0.3)]" 
                       style={{ textShadow: "2px 2px 0 #000" }}
                     >
-                      Select
+                      Auswählen
                     </button>
                   </div>
                 </div>

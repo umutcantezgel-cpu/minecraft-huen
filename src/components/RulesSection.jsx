@@ -7,36 +7,36 @@ gsap.registerPlugin(ScrollTrigger);
 const rules = [
   {
     id: 1,
-    title: "No Griefing",
-    description: "Respect other players' builds. Do not destroy or alter structures that aren't yours. Let's keep our world beautiful!",
+    title: "Kein Griefing",
+    description: "Respektiere die Bauwerke anderer Spieler. Zerstöre oder verändere keine Strukturen, die nicht dir gehören. Lass uns unsere Welt schön halten!",
     icon: "⛏️",
     color: "#ff5555" // Red
   },
   {
     id: 2,
-    title: "No Hacking or Cheating",
-    description: "Fair play is essential. X-ray, flying, or any unauthorized client mods are strictly prohibited.",
+    title: "Kein Hacken oder Cheaten",
+    description: "Fairplay ist unerlässlich. X-Ray, Fliegen oder andere unerlaubte Client-Mods sind strengstens verboten.",
     icon: "⚔️",
     color: "#ffaa00" // Gold
   },
   {
     id: 3,
-    title: "Be Respectful",
-    description: "Treat everyone with kindness. No hate speech, harassment, or excessive swearing in the chat.",
+    title: "Sei respektvoll",
+    description: "Behandle jeden mit Freundlichkeit. Keine Hassrede, Belästigung oder übermäßiges Fluchen im Chat.",
     icon: "💬",
     color: "#55ff55" // Green
   },
   {
     id: 4,
-    title: "Keep the Spawn Clean",
-    description: "The spawn area is a safe zone. Please don't build or leave random items lying around near the spawn point.",
+    title: "Halte den Spawn sauber",
+    description: "Der Spawn-Bereich ist eine sichere Zone. Bitte baue nicht in der Nähe des Spawns und lass keine zufälligen Items herumliegen.",
     icon: "🗺️",
     color: "#55ffff" // Aqua
   },
   {
     id: 5,
-    title: "Have Fun!",
-    description: "This is the most important rule. Enjoy your time, make friends, and create amazing things together.",
+    title: "Hab Spaß!",
+    description: "Das ist die wichtigste Regel. Genieße deine Zeit, finde Freunde und erschaffe gemeinsam großartige Dinge.",
     icon: "🎉",
     color: "#ffff55" // Yellow
   }
@@ -86,10 +86,10 @@ export default function RulesSection() {
         
         <div className="text-center">
           <h2 className="mc-heading text-5xl md:text-7xl text-white drop-shadow-md mb-8" style={{ textShadow: '4px 4px 0px #38501e' }}>
-            Server Rules
+            Server Regeln
           </h2>
           <p className="font-pixel text-xl text-gray-200 drop-shadow-sm max-w-2xl mx-auto leading-relaxed" style={{ textShadow: '2px 2px 0px black' }}>
-            Please read these rules carefully. Violations will result in a ban. Let's maintain a friendly and fair environment for everyone!
+            Bitte lies diese Regeln sorgfältig durch. Verstöße führen zu einem Bann. Lass uns eine freundliche und faire Umgebung für alle bewahren!
           </p>
         </div>
         

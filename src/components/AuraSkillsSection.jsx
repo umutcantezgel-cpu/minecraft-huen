@@ -7,10 +7,10 @@ if (typeof window !== 'undefined') {
 }
 
 const skills = [
-  { name: 'Mining', color: '#555555', icon: '⛏️', title: 'Deep Earth Mastery', desc: 'Shatter bedrock and unearth ancient debris to forge legendary gear.' },
-  { name: 'Farming', color: '#7a9e35', icon: '🌾', title: 'Bountiful Harvest', desc: 'Cultivate golden crops and brew powerful elixirs to sustain your journey.' },
-  { name: 'Combat', color: '#8b0000', icon: '⚔️', title: 'Mob Slayer', desc: 'Vanquish the Ender Dragon and claim its bounty. True warriors never yield.' },
-  { name: 'Foraging', color: '#2d4c1e', icon: '🪓', title: 'Lumberjack', desc: 'Fell the thickest jungle trees with a single swing. Nature is your domain.' }
+  { name: 'Bergbau', color: '#555555', icon: '⛏️', title: 'Meister der Tiefen', desc: 'Zerschmettere Grundgestein und grabe antiken Schutt aus, um legendäre Ausrüstung zu schmieden.' },
+  { name: 'Ackerbau', color: '#7a9e35', icon: '🌾', title: 'Reiche Ernte', desc: 'Kultiviere goldene Ernten und braue mächtige Elixiere, um deine Reise zu überstehen.' },
+  { name: 'Kampf', color: '#8b0000', icon: '⚔️', title: 'Mob-Bezwinger', desc: 'Besiege den Enderdrachen und beanspruche seine Beute. Wahre Krieger geben niemals auf.' },
+  { name: 'Holzfällen', color: '#2d4c1e', icon: '🪓', title: 'Holzfäller', desc: 'Fälle die dicksten Dschungelbäume mit einem einzigen Schlag. Die Natur ist dein Reich.' }
 ];
 
 export default function AuraSkillsSection() {

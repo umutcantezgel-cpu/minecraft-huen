@@ -55,23 +55,23 @@ export default function SlimefunSection() {
 
   const features = [
     {
-      title: "Automated Factories",
-      desc: "Build massive production lines with auto-crafters, smelters, and sorters. Automate everything from ore doubling to complex crafting.",
+      title: "Automatisierte Fabriken",
+      desc: "Baue gigantische Produktionslinien mit Auto-Craftern, Schmelzöfen und Sortierern. Automatisiere alles von der Erzverdopplung bis zum komplexen Crafting.",
       icon: "🏭"
     },
     {
-      title: "Cargo Networks",
-      desc: "Transport items seamlessly across your base using advanced routing nodes. Keep your storage perfectly sorted.",
+      title: "Frachtnetzwerke",
+      desc: "Transportiere Items nahtlos durch deine Basis mithilfe fortschrittlicher Routing-Knoten. Halte dein Lager perfekt sortiert.",
       icon: "📦"
     },
     {
-      title: "Nuclear Reactors",
-      desc: "Harness immense power to run your machines, but keep the cooling systems running to prevent devastating meltdowns!",
+      title: "Atomreaktoren",
+      desc: "Nutze immense Energie, um deine Maschinen zu betreiben, aber halte die Kühlsysteme am Laufen, um verheerende Kernschmelzen zu verhindern!",
       icon: "☢️"
     },
     {
-      title: "Magical Gadgets",
-      desc: "Craft jetpacks, grappling hooks, and elemental staves. Dominate the skies and traverse the world with ease.",
+      title: "Magische Gadgets",
+      desc: "Crafte Jetpacks, Greifhaken und Elementarstäbe. Beherrsche den Himmel und durchquere die Welt mit Leichtigkeit.",
       icon: "✨"
     }
   ];
@@ -95,14 +95,14 @@ export default function SlimefunSection() {
         <div ref={titleRef} className="text-center mb-24 flex flex-col items-center">
           <div className="mc-panel bg-[#1a1a1a] inline-block px-6 py-2 mb-6 border-4 border-[#3a3a3a]">
             <span className="text-[#55FF55] font-bold tracking-widest text-sm drop-shadow-[2px_2px_0px_#000]">
-              MODPACK EXPERIENCE
+              MODPACK-ERLEBNIS
             </span>
           </div>
           <h2 className="text-5xl md:text-7xl font-black mb-6 text-white drop-shadow-[4px_4px_0px_#000]">
-            Discover <span className="text-[#55FF55]">Slimefun 4</span>
+            Entdecke <span className="text-[#55FF55]">Slimefun 4</span>
           </h2>
           <p className="text-xl md:text-2xl text-[#AAAAAA] max-w-3xl mx-auto leading-relaxed drop-shadow-[2px_2px_0px_#000]">
-            Expand your Minecraft world with hundreds of new items, machines, and multi-block structures—no client mods required.
+            Erweitere deine Minecraft-Welt mit Hunderten von neuen Items, Maschinen und Multi-Block-Strukturen – ganz ohne Client-Mods.
           </p>
         </div>
 
@@ -128,7 +128,7 @@ export default function SlimefunSection() {
         <div className="mt-32 text-center flex flex-col items-center">
           <div className="mc-panel bg-[#444444] w-2 h-24 mb-8 border-2 border-[#222222]" />
           <button className="mc-btn px-8 py-4 text-xl">
-            Open the Guidebook
+            Öffne das Handbuch
           </button>
         </div>
       </div>

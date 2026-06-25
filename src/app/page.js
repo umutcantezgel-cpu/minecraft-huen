@@ -23,7 +23,15 @@ export default function MinecraftScrollTellingApp() {
   const [entered, setEntered] = useState(false);
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [muted, setMuted] = useState(false);
   const audioRef = useRef(null);
+
+  const toggleMute = () => {
+    if (audioRef.current) {
+      audioRef.current.muted = !muted;
+      setMuted(!muted);
+    }
+  };
 
   const handleEnter = () => {
     if (audioRef.current) {
@@ -74,13 +82,24 @@ export default function MinecraftScrollTellingApp() {
             </div>
           ) : (
             <div className="flex flex-col items-center gap-4">
-              <h1 className="text-4xl text-white drop-shadow-xl mb-4">Generating terrain...</h1>
+              <h1 className="text-4xl text-white drop-shadow-xl mb-4">Generiere Welt...</h1>
               <div className="w-80 sm:w-96 h-10 bg-black border-4 border-[#333] p-1 relative shadow-2xl">
                 <div className="h-full bg-[#7CFC00]" style={{ width: `${progress}%`, transition: 'width 0.1s linear' }} />
               </div>
             </div>
           )}
         </div>
+      )}
+
+      {/* Persistent Mute Button */}
+      {entered && (
+        <button 
+          onClick={toggleMute}
+          className="fixed top-6 right-6 z-[9999] mc-btn !px-4 !py-4 flex items-center justify-center shadow-2xl"
+          title={muted ? "Sound an" : "Sound aus"}
+        >
+          {muted ? "🔇" : "🔊"}
+        </button>
       )}
 
       {/* Main Content */}

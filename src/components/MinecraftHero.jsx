@@ -79,19 +79,19 @@ export default function MinecraftHero() {
         
         <div ref={subtitleRef} className="mc-panel mb-16 max-w-3xl p-6">
           <p className="text-2xl md:text-4xl font-bold text-white text-center" style={{ textShadow: '2px 2px 0 #000' }}>
-            The ultimate survival experience awaits. Build, explore, and conquer together.
+            Das ultimative Survival-Erlebnis erwartet dich. Bauen, erkunden und gemeinsam erobern.
           </p>
         </div>
 
         <div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 mb-24">
           <button className="mc-btn flex items-center justify-center gap-4 px-12 py-6 text-2xl font-black text-white" style={{ textShadow: '2px 2px 0 #000' }}>
             <Play className="fill-current w-8 h-8" />
-            Play Now
+            Jetzt spielen
           </button>
           
           <button className="mc-btn flex items-center justify-center gap-4 px-12 py-6 text-2xl font-black text-white" style={{ textShadow: '2px 2px 0 #000' }}>
             <Server className="w-8 h-8" />
-            Copy IP
+            IP kopieren
           </button>
         </div>
 
@@ -100,12 +100,12 @@ export default function MinecraftHero() {
           <div className="mc-panel flex flex-col items-center px-10 py-8 min-w-[240px] transform transition-transform hover:scale-105">
             <Users className="w-12 h-12 text-blue-400 mb-4 drop-shadow-[2px_2px_0_#000]" />
             <span className="text-5xl font-black text-white mb-2 drop-shadow-[2px_2px_0_#000]">1,204</span>
-            <span className="text-zinc-200 font-bold uppercase tracking-widest text-sm drop-shadow-[1px_1px_0_#000]">Players Online</span>
+            <span className="text-zinc-200 font-bold uppercase tracking-widest text-sm drop-shadow-[1px_1px_0_#000]">Spieler online</span>
           </div>
           <div className="mc-panel flex flex-col items-center px-10 py-8 min-w-[240px] transform transition-transform hover:scale-105">
             <Server className="w-12 h-12 text-green-400 mb-4 drop-shadow-[2px_2px_0_#000]" />
             <span className="text-5xl font-black text-white mb-2 drop-shadow-[2px_2px_0_#000]">99.9%</span>
-            <span className="text-zinc-200 font-bold uppercase tracking-widest text-sm drop-shadow-[1px_1px_0_#000]">Server Uptime</span>
+            <span className="text-zinc-200 font-bold uppercase tracking-widest text-sm drop-shadow-[1px_1px_0_#000]">Server-Laufzeit</span>
           </div>
         </div>
       </div>

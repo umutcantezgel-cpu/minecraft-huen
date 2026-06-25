@@ -54,11 +54,11 @@ const EconomySection = () => {
       <div ref={containerRef} className="container mx-auto px-4 relative z-10 max-w-5xl">
         <div ref={titleRef} className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl text-mc-gold drop-shadow-mc mb-6 tracking-wider">
-            Player-Driven Economy
+            Spielergesteuerte Wirtschaft
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto drop-shadow-md">
-            Forge your own path to wealth. Our custom economy is built from the ground up to reward 
-            dedication, creativity, and trading mastery.
+            Schmiede deinen eigenen Weg zum Reichtum. Unsere maßgeschneiderte Wirtschaft wurde von Grund auf so aufgebaut, dass sie 
+            Hingabe, Kreativität und Handelsgeschick belohnt.
           </p>
         </div>
 
@@ -69,10 +69,10 @@ const EconomySection = () => {
             className="mc-panel-dirt p-8 text-center transform transition-transform duration-300 hover:scale-105"
           >
             <div className="text-4xl mb-6 drop-shadow-mc text-mc-emerald">💎</div>
-            <h3 className="text-2xl text-white mb-4 drop-shadow-md">Dynamic Markets</h3>
+            <h3 className="text-2xl text-white mb-4 drop-shadow-md">Dynamische Märkte</h3>
             <p className="text-gray-200 leading-relaxed text-sm">
-              Prices fluctuate based on supply and demand. Exploit shortages, monopolize resources, 
-              and build your merchant empire.
+              Preise schwanken basierend auf Angebot und Nachfrage. Nutze Engpässe aus, monopolisiere Ressourcen, 
+              und baue dein Handelsimperium auf.
             </p>
           </div>
 
@@ -82,10 +82,10 @@ const EconomySection = () => {
             className="mc-panel p-8 text-center transform transition-transform duration-300 hover:scale-105"
           >
             <div className="text-4xl mb-6 drop-shadow-mc text-mc-gold">⚔️</div>
-            <h3 className="text-2xl text-white mb-4 drop-shadow-md">Bounty System</h3>
+            <h3 className="text-2xl text-white mb-4 drop-shadow-md">Kopfgeld-System</h3>
             <p className="text-gray-200 leading-relaxed text-sm">
-              Place hits on rivals or claim bounties to earn cash. The wilderness is dangerous, 
-              but it's where the real money is made.
+              Setze Kopfgelder auf Rivalen aus oder kassiere sie, um Geld zu verdienen. Die Wildnis ist gefährlich, 
+              aber dort wird das wahre Geld gemacht.
             </p>
           </div>
 
@@ -95,10 +95,10 @@ const EconomySection = () => {
             className="mc-panel-dirt p-8 text-center transform transition-transform duration-300 hover:scale-105"
           >
             <div className="text-4xl mb-6 drop-shadow-mc text-mc-light">🏪</div>
-            <h3 className="text-2xl text-white mb-4 drop-shadow-md">Player Shops</h3>
+            <h3 className="text-2xl text-white mb-4 drop-shadow-md">Spieler-Shops</h3>
             <p className="text-gray-200 leading-relaxed text-sm">
-              Rent stalls in the grand bazaar or set up hidden outposts. You control the inventory, 
-              you control the prices.
+              Miete Stände im großen Basar oder errichte versteckte Außenposten. Du kontrollierst das Inventar, 
+              du kontrollierst die Preise.
             </p>
           </div>
         </div>

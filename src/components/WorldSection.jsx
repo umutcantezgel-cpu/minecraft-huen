@@ -89,11 +89,11 @@ export default function WorldSection() {
             {/* Minecraft Style Panel */}
             <div className="bg-[#C6C6C6] border-[6px] border-black shadow-[inset_-6px_-6px_0_rgba(85,85,85,1),inset_6px_6px_0_rgba(255,255,255,1),8px_8px_0_rgba(0,0,0,0.25)] p-10 max-w-3xl text-center">
               <h2 className="text-5xl md:text-6xl text-[#333333] font-bold tracking-widest uppercase mb-6 drop-shadow-[3px_3px_0_rgba(255,255,255,1)]">
-                The Overworld
+                Die Oberwelt
               </h2>
               <div className="h-1.5 w-full bg-[#555555] mb-6 border-b-[3px] border-white"></div>
               <p className="text-xl md:text-2xl text-[#222222] font-semibold leading-relaxed">
-                Step into a sprawling landscape of lush forests, towering mountains, and deep ravines. Gather resources, farm crops, and survive the night.
+                Betrete eine weitläufige Landschaft aus üppigen Wäldern, aufragenden Bergen und tiefen Schluchten. Sammle Ressourcen, baue Feldfrüchte an und überlebe die Nacht.
               </p>
             </div>
           </div>
@@ -117,11 +117,11 @@ export default function WorldSection() {
             {/* Dirt Style Panel */}
             <div className="bg-[#8B5A2B] border-[6px] border-black shadow-[inset_-6px_-6px_0_rgba(90,58,26,1),inset_6px_6px_0_rgba(166,124,82,1),8px_8px_0_rgba(0,0,0,0.3)] p-10 max-w-3xl text-center">
               <h2 className="text-5xl md:text-6xl text-white font-bold tracking-widest uppercase mb-6 drop-shadow-[3px_3px_0_rgba(0,0,0,1)]">
-                Build Your Base
+                Baue deine Basis
               </h2>
               <div className="h-1.5 w-full bg-[#5A3A1A] mb-6 border-b-[3px] border-[#A67C52]"></div>
               <p className="text-xl md:text-2xl text-[#F0E6D2] font-semibold leading-relaxed mb-8 drop-shadow-[2px_2px_0_rgba(0,0,0,0.8)]">
-                From humble dirt huts to massive redstone contraptions. Your imagination is the only limit.
+                Von bescheidenen Erdhütten bis hin zu riesigen Redstone-Konstruktionen. Deine Fantasie ist die einzige Grenze.
               </p>
               <div className="flex justify-center gap-8">
                 {/* Stone Block */}
@@ -160,11 +160,11 @@ export default function WorldSection() {
               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_#AA00FF_0%,_transparent_100%)] mix-blend-screen" />
               
               <h2 className="text-5xl md:text-6xl text-[#FF5555] font-bold tracking-widest uppercase mb-6 drop-shadow-[3px_3px_0_rgba(0,0,0,1)] relative z-10">
-                The Nether
+                Der Nether
               </h2>
               <div className="h-1.5 w-full bg-[#300000] mb-6 border-b-[3px] border-[#8A0000] relative z-10"></div>
               <p className="text-xl md:text-2xl text-[#FFAAAA] font-semibold leading-relaxed relative z-10 drop-shadow-[2px_2px_0_rgba(0,0,0,0.8)]">
-                A hellscape of fire, lava, and dangerous mobs. Mine ancient debris and brave the fortresses to gather rare loot.
+                Eine Höllenlandschaft aus Feuer, Lava und gefährlichen Mobs. Baue antiken Schutt ab und trotze den Festungen, um seltene Beute zu sammeln.
               </p>
             </div>
           </div>
@@ -193,11 +193,11 @@ export default function WorldSection() {
             {/* End Style Panel */}
             <div className="bg-[#1A1A1A] border-[6px] border-[#333333] shadow-[inset_-6px_-6px_0_rgba(0,0,0,0.8),inset_6px_6px_0_rgba(255,255,255,0.1),8px_8px_0_rgba(0,0,0,1)] p-10 max-w-3xl text-center border-t-[#8B00FF] border-t-[12px]">
               <h2 className="text-5xl md:text-6xl text-[#EEDDFF] font-bold tracking-widest uppercase mb-6 drop-shadow-[3px_3px_0_rgba(139,0,255,0.8)]">
-                The End
+                Das Ende
               </h2>
               <div className="h-1.5 w-full bg-[#000000] mb-6 border-b-[3px] border-[#333333]"></div>
               <p className="text-xl md:text-2xl text-[#D0C0E0] font-semibold leading-relaxed mb-10 drop-shadow-[2px_2px_0_rgba(0,0,0,0.8)]">
-                Face the Ender Dragon in the barren void. Claim the ultimate victory and soar the skies with Elytra.
+                Stelle dich dem Enderdrachen in der kargen Leere. Erringe den ultimativen Sieg und erobere die Lüfte mit den Elytren.
               </p>
               
               <div className="flex justify-center">

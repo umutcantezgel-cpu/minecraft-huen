@@ -73,10 +73,10 @@ export default function ConnectionGuide() {
         <div className="guide-title text-center mb-16">
           <div className="mc-panel inline-block p-6 px-12 relative overflow-hidden">
             <h2 className="text-4xl md:text-5xl font-bold text-yellow-400 drop-shadow-[0_4px_0_rgba(0,0,0,0.8)] uppercase tracking-wide">
-              How to Join
+              Wie man beitritt
             </h2>
             <p className="text-xl mt-4 text-white drop-shadow-[0_2px_0_rgba(0,0,0,0.8)] font-semibold">
-              Java & Bedrock Supported!
+              Java & Bedrock werden unterstützt!
             </p>
           </div>
         </div>
@@ -85,7 +85,7 @@ export default function ConnectionGuide() {
         <div className="server-info-card mc-panel p-8 mb-20 bg-[#505050] border-4 border-black">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             <div className="p-4 bg-black/50 border-4 border-[#373737] shadow-inner">
-              <h3 className="text-gray-400 font-bold mb-2 uppercase text-sm drop-shadow-md">Server IP</h3>
+              <h3 className="text-gray-400 font-bold mb-2 uppercase text-sm drop-shadow-md">Server-IP</h3>
               <p className="text-xl md:text-2xl font-bold text-green-400 font-mono select-all drop-shadow-[0_2px_0_rgba(0,0,0,1)]">
                 Umutcan_Emre.exaroton.me
               </p>
@@ -117,37 +117,37 @@ export default function ConnectionGuide() {
               <div className="guide-step mc-panel p-6 flex gap-6 items-center bg-[#8B8B8B]">
                 <div className="w-12 h-12 shrink-0 bg-[#373737] border-4 border-[#1D1D1D] flex items-center justify-center text-xl font-bold text-yellow-400 drop-shadow-md">1</div>
                 <div>
-                  <h4 className="text-xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Launch Minecraft</h4>
-                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold">Open launcher, use version <span className="text-yellow-400 font-mono">1.21.4</span>.</p>
+                  <h4 className="text-xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Minecraft starten</h4>
+                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold">Öffne den Launcher, nutze Version <span className="text-yellow-400 font-mono">1.21.4</span>.</p>
                 </div>
               </div>
 
               <div className="guide-step mc-panel p-6 flex gap-6 items-center bg-[#8B8B8B]">
                 <div className="w-12 h-12 shrink-0 bg-[#373737] border-4 border-[#1D1D1D] flex items-center justify-center text-xl font-bold text-yellow-400 drop-shadow-md">2</div>
                 <div>
-                  <h4 className="text-xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Multiplayer</h4>
-                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold">Click the <strong className="text-white">Multiplayer</strong> button.</p>
+                  <h4 className="text-xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Mehrspieler</h4>
+                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold">Klicke auf die Schaltfläche <strong className="text-white">Mehrspieler</strong>.</p>
                 </div>
               </div>
 
               <div className="guide-step mc-panel p-6 flex gap-6 items-center bg-[#8B8B8B]">
                 <div className="w-12 h-12 shrink-0 bg-[#373737] border-4 border-[#1D1D1D] flex items-center justify-center text-xl font-bold text-yellow-400 drop-shadow-md">3</div>
                 <div>
-                  <h4 className="text-xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Add Server</h4>
-                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold">Click <strong className="text-white">Add Server</strong> at the bottom right.</p>
+                  <h4 className="text-xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Server hinzufügen</h4>
+                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold">Klicke unten rechts auf <strong className="text-white">Server hinzufügen</strong>.</p>
                 </div>
               </div>
 
               <div className="guide-step mc-panel p-6 flex gap-6 items-center bg-[#8B8B8B]">
                 <div className="w-12 h-12 shrink-0 bg-[#373737] border-4 border-[#1D1D1D] flex items-center justify-center text-xl font-bold text-yellow-400 drop-shadow-md">4</div>
                 <div className="w-full">
-                  <h4 className="text-xl font-bold text-white mb-2 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Enter Details</h4>
+                  <h4 className="text-xl font-bold text-white mb-2 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Details eingeben</h4>
                   <div className="bg-black/60 p-3 border-4 border-[#373737] mb-2 shadow-inner">
-                    <div className="text-gray-400 text-xs uppercase mb-1 font-bold">Server Name</div>
+                    <div className="text-gray-400 text-xs uppercase mb-1 font-bold">Servername</div>
                     <div className="text-white font-mono drop-shadow-md">Minecraft Server</div>
                   </div>
                   <div className="bg-black/60 p-3 border-4 border-[#373737] shadow-inner">
-                    <div className="text-gray-400 text-xs uppercase mb-1 font-bold">Server Address</div>
+                    <div className="text-gray-400 text-xs uppercase mb-1 font-bold">Serveradresse</div>
                     <div className="text-green-400 font-mono break-all drop-shadow-md">Umutcan_Emre.exaroton.me:28198</div>
                   </div>
                 </div>
@@ -156,8 +156,8 @@ export default function ConnectionGuide() {
               <div className="guide-step mc-panel p-6 flex gap-6 items-center bg-[#4CAF50] border-t-4 border-l-4 border-[#81C784] border-b-8 border-r-8 border-[#2E7D32]">
                 <div className="w-12 h-12 shrink-0 bg-[#1B5E20] border-4 border-[#000000] flex items-center justify-center text-2xl font-bold text-[#A5D6A7] drop-shadow-md">✓</div>
                 <div>
-                  <h4 className="text-2xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,0.8)]">Connect!</h4>
-                  <p className="text-green-100 drop-shadow-md font-semibold">Click Done and <strong className="text-white">Join Server</strong>.</p>
+                  <h4 className="text-2xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,0.8)]">Verbinden!</h4>
+                  <p className="text-green-100 drop-shadow-md font-semibold">Klicke auf Fertig und <strong className="text-white">Server beitreten</strong>.</p>
                 </div>
               </div>
             </div>
@@ -173,37 +173,37 @@ export default function ConnectionGuide() {
               <div className="guide-step mc-panel p-6 flex gap-6 items-center bg-[#8B8B8B]">
                 <div className="w-12 h-12 shrink-0 bg-[#373737] border-4 border-[#1D1D1D] flex items-center justify-center text-xl font-bold text-yellow-400 drop-shadow-md">1</div>
                 <div>
-                  <h4 className="text-xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Open Minecraft</h4>
-                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold">Launch on Console/PE, version <span className="text-yellow-400 font-mono">1.21.4</span>.</p>
+                  <h4 className="text-xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Minecraft öffnen</h4>
+                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold">Starte auf Konsole/PE, Version <span className="text-yellow-400 font-mono">1.21.4</span>.</p>
                 </div>
               </div>
 
               <div className="guide-step mc-panel p-6 flex gap-6 items-center bg-[#8B8B8B]">
                 <div className="w-12 h-12 shrink-0 bg-[#373737] border-4 border-[#1D1D1D] flex items-center justify-center text-xl font-bold text-yellow-400 drop-shadow-md">2</div>
                 <div>
-                  <h4 className="text-xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Play Menu</h4>
-                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold">Click Play, then the <strong className="text-white">Servers</strong> tab.</p>
+                  <h4 className="text-xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Spielen-Menü</h4>
+                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold">Klicke auf Spielen, dann auf den Tab <strong className="text-white">Server</strong>.</p>
                 </div>
               </div>
 
               <div className="guide-step mc-panel p-6 flex gap-6 items-center bg-[#8B8B8B]">
                 <div className="w-12 h-12 shrink-0 bg-[#373737] border-4 border-[#1D1D1D] flex items-center justify-center text-xl font-bold text-yellow-400 drop-shadow-md">3</div>
                 <div>
-                  <h4 className="text-xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Add Server</h4>
-                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold">Scroll down and click <strong className="text-white">Add External Server</strong>.</p>
+                  <h4 className="text-xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Server hinzufügen</h4>
+                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold">Scrolle nach unten und klicke auf <strong className="text-white">Externen Server hinzufügen</strong>.</p>
                 </div>
               </div>
 
               <div className="guide-step mc-panel p-6 flex gap-6 items-center bg-[#8B8B8B]">
                 <div className="w-12 h-12 shrink-0 bg-[#373737] border-4 border-[#1D1D1D] flex items-center justify-center text-xl font-bold text-yellow-400 drop-shadow-md">4</div>
                 <div className="w-full">
-                  <h4 className="text-xl font-bold text-white mb-2 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Enter Details</h4>
+                  <h4 className="text-xl font-bold text-white mb-2 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Details eingeben</h4>
                   <div className="bg-black/60 p-3 border-4 border-[#373737] mb-2 shadow-inner">
-                    <div className="text-gray-400 text-xs uppercase mb-1 font-bold">Server Name</div>
+                    <div className="text-gray-400 text-xs uppercase mb-1 font-bold">Servername</div>
                     <div className="text-white font-mono drop-shadow-md">Minecraft Server</div>
                   </div>
                   <div className="bg-black/60 p-3 border-4 border-[#373737] mb-2 shadow-inner">
-                    <div className="text-gray-400 text-xs uppercase mb-1 font-bold">Server Address</div>
+                    <div className="text-gray-400 text-xs uppercase mb-1 font-bold">Serveradresse</div>
                     <div className="text-green-400 font-mono break-all drop-shadow-md">Umutcan_Emre.exaroton.me</div>
                   </div>
                   <div className="bg-black/60 p-3 border-4 border-[#373737] shadow-inner">
@@ -216,8 +216,8 @@ export default function ConnectionGuide() {
               <div className="guide-step mc-panel p-6 flex gap-6 items-center bg-[#2196F3] border-t-4 border-l-4 border-[#64B5F6] border-b-8 border-r-8 border-[#1565C0]">
                 <div className="w-12 h-12 shrink-0 bg-[#0D47A1] border-4 border-[#000000] flex items-center justify-center text-2xl font-bold text-[#90CAF9] drop-shadow-md">✓</div>
                 <div>
-                  <h4 className="text-2xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,0.8)]">Save & Play!</h4>
-                  <p className="text-blue-100 drop-shadow-md font-semibold">Click Save, then <strong className="text-white">Join Server</strong>.</p>
+                  <h4 className="text-2xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,0.8)]">Speichern & Spielen!</h4>
+                  <p className="text-blue-100 drop-shadow-md font-semibold">Klicke auf Speichern, dann auf <strong className="text-white">Server beitreten</strong>.</p>
                 </div>
               </div>
             </div>

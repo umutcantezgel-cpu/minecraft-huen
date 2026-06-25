@@ -1,98 +1,100 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function LoreSection() {
-  const containerRef = useRef(null);
-  const textRefs = useRef([]);
+const LoreSection = () => {
+  const sectionRef = useRef(null);
+  const elementsRef = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      textRefs.current.forEach((el) => {
-        gsap.fromTo(el, 
-          { opacity: 0, y: 100 },
-          {
-            opacity: 1, 
-            y: 0,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-              end: "center 50%",
-              scrub: 1,
-            }
+      gsap.fromTo(
+        elementsRef.current,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            scrub: 1,
           }
-        );
-      });
-    }, containerRef);
+        }
+      );
+    }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  const loreParagraphs = [
-    "In the beginning, there was only the Void. An endless expanse of nothingness, until the Great Builders descended from the starry realms. They carried with them the First Blocks—diamonds that pulsed with raw, untamed energy.",
-    "With these blocks, they laid the foundation of our world. The Overworld was forged from their dreams, a vibrant tapestry of emerald forests, azure oceans, and towering golden peaks that touched the sky.",
-    "But creation is never without cost. The chaotic energies of the First Blocks seeped deep into the bedrock, giving birth to the Nether, a realm of fire and shadows where the builders' nightmares took physical form.",
-    "For millennia, the Overworld knew peace. Ancient civilizations rose, constructing magnificent temples of quartz and towering citadels of prismarine. They lived in harmony with the creatures of the land.",
-    "Then came the End. A fracture in reality itself, spewing forth the great Dragon and its endless legion of void-walkers. The sky turned dark, and the Great Builders were forced to seal the rift, trapping themselves on the other side.",
-    "Without their creators, the civilizations of the Overworld slowly crumbled into ruin. Their grand cities were reclaimed by nature, buried beneath the sand, and swallowed by the sea.",
-    "But the magic of the First Blocks remained. It pulsed in the deep caverns, waiting for a new generation of heroes to discover it, to wield its power, and to rebuild what was lost.",
-    "Now, the age of the players has begun. You are the inheritors of this fractured world. Will you restore the glory of the ancients, or will you forge a new destiny from the shattered remnants of the past?",
-    "Every block you place, every tool you craft, echoes with the legacy of the Great Builders. The world is a blank canvas once more, and you are the artist.",
-    "Gather your friends, sharpen your swords, and prepare for the ultimate adventure. The lore of this server is not just a story of the past; it is the foundation of the future you will create."
-  ];
+  const addToRefs = (el) => {
+    if (el && !elementsRef.current.includes(el)) {
+      elementsRef.current.push(el);
+    }
+  };
 
   return (
-    <section 
-      ref={containerRef} 
-      style={{
-        backgroundColor: '#55FF55', // Bright Minecraft Green
-        color: '#FFFFFF',
-        fontFamily: "'Courier New', Courier, monospace",
-        padding: '5rem 2rem',
-        minHeight: '200vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '40vh',
-        backgroundImage: 'linear-gradient(135deg, #55FF55 0%, #00AA00 100%)',
-        borderTop: '8px solid #000',
-        borderBottom: '8px solid #000',
-      }}
-    >
-      <h2 style={{
-        fontSize: '4rem',
-        textShadow: '4px 4px 0 #000',
-        textAlign: 'center',
-        marginTop: '10vh',
-        marginBottom: '10vh'
-      }}>
-        The Ancient Chronicles
-      </h2>
+    <div ref={sectionRef} className="lore-section py-16 px-4 min-h-screen flex flex-col items-center justify-center bg-black/80 font-minecraft">
+      <h2 ref={addToRefs} className="text-4xl md:text-6xl text-white mb-12 uppercase tracking-widest text-shadow-mc">Die Lore</h2>
       
-      {loreParagraphs.map((text, i) => (
-        <div 
-          key={i} 
-          ref={el => textRefs.current[i] = el}
-          style={{
-            maxWidth: '800px',
-            fontSize: '2rem',
-            lineHeight: '1.6',
-            padding: '2rem',
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            border: '4px solid #FFF',
-            borderRadius: '0px',
-            boxShadow: '12px 12px 0 #000',
-            textShadow: '2px 2px 0 #000',
-            textAlign: 'center'
-          }}
-        >
-          {text}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
+        {/* Panel 1 */}
+        <div ref={addToRefs} className="mc-panel-wood p-6 border-4 border-[#3c2a16] bg-[#5a3a1f] text-[#f2f2f2] relative shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]">
+          <div className="absolute top-0 left-0 w-full h-1 bg-[#8f5a30]"></div>
+          <div className="absolute top-0 left-0 w-1 h-full bg-[#8f5a30]"></div>
+          <div className="absolute bottom-0 right-0 w-full h-1 bg-[#2b1b0d]"></div>
+          <div className="absolute bottom-0 right-0 w-1 h-full bg-[#2b1b0d]"></div>
+          
+          <h3 className="text-2xl mb-4 text-[#ffff55]">Der Anfang</h3>
+          <p className="text-sm leading-relaxed">
+            In den alten Tagen, bevor die großen Server zerbrachen, gab es eine einzige zusammenhängende Welt. 
+            Spieler bauten Monumente in den Himmel und gruben tief in die Erde. Die Gemeinschaft war vereint durch 
+            ein gemeinsames Ziel: Überleben und Erschaffen.
+          </p>
         </div>
-      ))}
-      <div style={{ height: '20vh' }}></div>
-    </section>
+
+        {/* Panel 2 */}
+        <div ref={addToRefs} className="mc-panel-dirt p-6 border-4 border-[#4d3318] bg-[#68492d] text-[#f2f2f2] relative shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]">
+          <div className="absolute top-0 left-0 w-full h-2 bg-[#5e8c3b]"></div>
+          <div className="absolute top-0 left-0 w-1 h-full bg-[#845e3c]"></div>
+          <div className="absolute bottom-0 right-0 w-full h-1 bg-[#3a2515]"></div>
+          <div className="absolute bottom-0 right-0 w-1 h-full bg-[#3a2515]"></div>
+
+          <h3 className="text-2xl mb-4 text-[#55ff55]">Die große Spaltung</h3>
+          <p className="text-sm leading-relaxed">
+            Dann kam die Ära der Zersplitterung. Fraktionen erhoben sich und das Land wurde geteilt. 
+            Ressourcen wurden knapp und Allianzen wurden auf die Probe gestellt. Doch inmitten des Chaos 
+            wurden Legenden geschmiedet.
+          </p>
+        </div>
+
+        {/* Panel 3 */}
+        <div ref={addToRefs} className="mc-panel-wood p-6 border-4 border-[#3c2a16] bg-[#5a3a1f] text-[#f2f2f2] relative shadow-[inset_0_0_10px_rgba(0,0,0,0.5)] md:col-span-2">
+          <div className="absolute top-0 left-0 w-full h-1 bg-[#8f5a30]"></div>
+          <div className="absolute top-0 left-0 w-1 h-full bg-[#8f5a30]"></div>
+          <div className="absolute bottom-0 right-0 w-full h-1 bg-[#2b1b0d]"></div>
+          <div className="absolute bottom-0 right-0 w-1 h-full bg-[#2b1b0d]"></div>
+
+          <h3 className="text-2xl mb-4 text-[#ff5555]">Ein neuer Morgen</h3>
+          <div className="flex flex-col md:flex-row gap-6 items-center">
+            <p className="text-sm leading-relaxed flex-1">
+              Jetzt vereinen sich die Server wieder. Eine neue Generation von Spielern tritt hervor 
+              und bringt das Wissen der Ahnen und die Innovationen der Moderne mit sich. 
+              Das NextGen Server Event markiert den Beginn dieses neuen Kapitels. Wirst du dem Ruf folgen?
+            </p>
+            <div className="flex-shrink-0">
+              <div className="w-16 h-16 bg-[#333] border-4 border-[#555] flex items-center justify-center">
+                <span className="text-3xl text-white">⚔️</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-}
+};
+
+export default LoreSection;

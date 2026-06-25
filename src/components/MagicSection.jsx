@@ -72,7 +72,7 @@ export default function MagicSection() {
           ref={titleRef}
           className="text-5xl md:text-6xl font-bold text-center mb-20 text-[#d97cff] drop-shadow-[4px_4px_0_rgba(0,0,0,1)] uppercase tracking-wider"
         >
-          Active Magic System
+          Aktives Magiesystem
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -82,9 +82,9 @@ export default function MagicSection() {
               <span ref={wandIconRef} className="text-7xl z-10" role="img" aria-label="wand">🪄</span>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#d97cff] to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
             </div>
-            <h3 className="text-3xl font-bold mb-4 text-[#ffd700] drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">Arcane Wands</h3>
+            <h3 className="text-3xl font-bold mb-4 text-[#ffd700] drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">Arkane Zauberstäbe</h3>
             <p className="text-[#e2e2e2] leading-relaxed drop-shadow-[1px_1px_0_rgba(0,0,0,0.8)] text-lg">
-              Craft unique wands from rare materials found in the deep dark. Each wand core changes the nature of your spells. Master the Blaze Rod wand of fire or the Ender Pearl wand of teleportation.
+              Stelle einzigartige Zauberstäbe aus seltenen Materialien her, die in der tiefen Dunkelheit gefunden werden. Jeder Zauberstabkern verändert die Natur deiner Zauber. Meistere den Lohenruten-Zauberstab des Feuers oder den Enderperlen-Zauberstab der Teleportation.
             </p>
           </div>
 
@@ -94,9 +94,9 @@ export default function MagicSection() {
               <div className="absolute w-32 h-32 bg-[#ff55ff] rounded-full blur-2xl animate-pulse opacity-50"></div>
               <span ref={spellIconRef} className="text-7xl relative z-10" role="img" aria-label="spell">✨</span>
             </div>
-            <h3 className="text-3xl font-bold mb-4 text-[#ff55ff] drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">Dynamic Spells</h3>
+            <h3 className="text-3xl font-bold mb-4 text-[#ff55ff] drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">Dynamische Zaubersprüche</h3>
             <p className="text-[#e2e2e2] leading-relaxed drop-shadow-[1px_1px_0_rgba(0,0,0,0.8)] text-lg">
-              Combine runes in your spellbook to discover new incantations. Cast devastating fireballs, summon protective arcane shields, or unleash chains of lightning to vanquish mobs.
+              Kombiniere Runen in deinem Zauberbuch, um neue Beschwörungen zu entdecken. Wirke verheerende Feuerbälle, beschwöre schützende arkane Schilde oder entfessle Blitzketten, um Mobs zu besiegen.
             </p>
           </div>
 
@@ -106,9 +106,9 @@ export default function MagicSection() {
               <span ref={teleIconRef} className="text-7xl z-10" role="img" aria-label="telekinesis">📦</span>
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#55ffff] to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
             </div>
-            <h3 className="text-3xl font-bold mb-4 text-[#55ffff] drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">Telekinesis</h3>
+            <h3 className="text-3xl font-bold mb-4 text-[#55ffff] drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">Telekinese</h3>
             <p className="text-[#e2e2e2] leading-relaxed drop-shadow-[1px_1px_0_rgba(0,0,0,0.8)] text-lg">
-              Move blocks with the power of your mind! Solve environmental puzzles, build from afar, or throw anvils at unsuspecting Creepers. Your mind is your greatest tool.
+              Bewege Blöcke mit der Kraft deines Geistes! Löse Umgebungsrätsel, baue aus der Ferne oder wirf Ambosse auf ahnungslose Creeper. Dein Geist ist dein größtes Werkzeug.
             </p>
           </div>
         </div>
