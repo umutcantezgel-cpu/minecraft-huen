@@ -6,13 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import MinecraftHero from "@/components/MinecraftHero";
 import LoreSection from "@/components/LoreSection";
-import SlimefunSection from "@/components/SlimefunSection";
-import MagicSection from "@/components/MagicSection";
-import AuraSkillsSection from "@/components/AuraSkillsSection";
-import SocialSection from "@/components/SocialSection";
 import EconomySection from "@/components/EconomySection";
 import WorldSection from "@/components/WorldSection";
-import RanksSection from "@/components/RanksSection";
 import RulesSection from "@/components/RulesSection";
 import ConnectionGuide from "@/components/ConnectionGuide";
 import MinecraftFooter from "@/components/MinecraftFooter";
@@ -56,13 +51,8 @@ export default function MinecraftScrollTellingApp() {
         <ConnectionGuide />
         
         <div className="max-w-6xl mx-auto w-full px-4 flex flex-col gap-40">
-          <SlimefunSection />
-          <MagicSection />
-          <AuraSkillsSection />
-          <SocialSection />
-          <EconomySection />
           <WorldSection />
-          <RanksSection />
+          <EconomySection />
           <RulesSection />
         </div>
         
