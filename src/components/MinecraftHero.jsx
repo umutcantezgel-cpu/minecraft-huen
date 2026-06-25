@@ -84,12 +84,21 @@ export default function MinecraftHero() {
         </div>
 
         <div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 mb-24">
-          <button className="mc-btn flex items-center justify-center gap-4 px-12 py-6 text-2xl font-black text-white" style={{ textShadow: '2px 2px 0 #000' }}>
+          <button 
+            onClick={() => document.getElementById('connection-guide')?.scrollIntoView({ behavior: 'smooth' })}
+            className="mc-btn flex items-center justify-center gap-4 px-12 py-6 text-2xl font-black text-white" style={{ textShadow: '2px 2px 0 #000' }}
+          >
             <Play className="fill-current w-8 h-8" />
             Jetzt spielen
           </button>
           
-          <button className="mc-btn flex items-center justify-center gap-4 px-12 py-6 text-2xl font-black text-white" style={{ textShadow: '2px 2px 0 #000' }}>
+          <button 
+            onClick={() => {
+              navigator.clipboard.writeText('Umutcan_Emre.exaroton.me:28198');
+              alert('IP kopiert: Umutcan_Emre.exaroton.me:28198');
+            }}
+            className="mc-btn flex items-center justify-center gap-4 px-12 py-6 text-2xl font-black text-white" style={{ textShadow: '2px 2px 0 #000' }}
+          >
             <Server className="w-8 h-8" />
             IP kopieren
           </button>

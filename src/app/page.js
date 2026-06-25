@@ -95,10 +95,11 @@ export default function MinecraftScrollTellingApp() {
       {entered && (
         <button 
           onClick={toggleMute}
-          className="fixed top-6 right-6 z-[9999] mc-btn !px-4 !py-4 flex items-center justify-center shadow-2xl"
-          title={muted ? "Sound an" : "Sound aus"}
+          className="fixed top-6 right-6 z-[9999] mc-btn !px-6 !py-4 flex items-center justify-center gap-3 shadow-2xl font-pixel text-white text-xl"
+          title={muted ? "Musik an" : "Musik aus"}
         >
-          {muted ? "🔇" : "🔊"}
+          <span className="text-2xl">{muted ? "🔇" : "🔊"}</span>
+          <span className="drop-shadow-md">{muted ? "Musik an" : "Musik aus"}</span>
         </button>
       )}
 
