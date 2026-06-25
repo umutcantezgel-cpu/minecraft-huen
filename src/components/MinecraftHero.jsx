@@ -27,9 +27,7 @@ export default function MinecraftHero() {
 
       // Parallax and fade out as we scroll down
       tl.to(titleRef.current, { y: 150, scale: 1.1, opacity: 0 }, 0)
-        .to(subtitleRef.current, { y: 100, opacity: 0 }, 0)
-        .to(ctaRef.current, { y: 50, opacity: 0 }, 0)
-        .to(statsRef.current, { y: 20, opacity: 0 }, 0);
+        .to(ctaRef.current, { y: 50, opacity: 0 }, 0);
 
       // Clouds moving effect
       cloudsRef.current.forEach((cloud, i) => {
@@ -76,14 +74,8 @@ export default function MinecraftHero() {
         >
           HUEN<br/><span className="text-green-400 text-4xl md:text-7xl">ECOSYSTEM</span>
         </h1>
-        
-        <div ref={subtitleRef} className="mc-panel mb-16 max-w-3xl p-6">
-          <p className="text-xl md:text-3xl font-bold text-white text-center leading-relaxed" style={{ textShadow: '2px 2px 0 #000' }}>
-            Exklusiver Zugang für die Huen Gruppe. Erlebe ein hochmodernes Survival-Netzwerk mit industriellen Anlagen, aktiver Kampfmagie und endloser Progression. Der Soft-Launch beginnt jetzt.
-          </p>
-        </div>
 
-        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 mb-24">
+        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 mb-24 mt-16">
           <button 
             onClick={() => document.getElementById('connection-guide')?.scrollIntoView({ behavior: 'smooth' })}
             className="mc-btn flex items-center justify-center gap-4 px-12 py-6 text-2xl font-black text-white" style={{ textShadow: '2px 2px 0 #000' }}
@@ -126,14 +118,6 @@ export default function MinecraftHero() {
           </div>
         </div>
 
-        {/* Invitation Message */}
-        <div ref={statsRef} className="flex justify-center mt-12 px-4">
-          <div className="mc-panel p-6 text-center max-w-2xl">
-            <p className="text-xl md:text-2xl text-yellow-400 font-bold drop-shadow-md">
-              ⚡ Bereite dich vor. Die Server sind hochgefahren, die Welt ist vorgeneriert. Sammle deine Crew und dominiere das Endgame.
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );
