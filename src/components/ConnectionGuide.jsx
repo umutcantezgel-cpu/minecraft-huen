@@ -226,9 +226,9 @@ export default function ConnectionGuide() {
         </div>
 
         {/* Tech-Exzellenz Note */}
-        <div className="mt-16 mc-panel p-6 bg-black/40 border-2 border-gray-600 max-w-4xl mx-auto text-center shadow-lg">
-          <p className="text-gray-300 text-sm md:text-base font-semibold leading-relaxed">
-            <span className="text-yellow-400 font-bold">Tech-Exzellenz:</span> 100% Serverseitig modifiziert – Konsolen- und Mobile-Spieler müssen keinerlei Mods oder Texturen herunterladen. Die Welt wurde via Chunky im Radius von 2500 Blöcken komplett vorgeneriert für ein absolut lag-freies Erkundungserlebnis.
+        <div className="mt-16 mc-panel p-6 max-w-4xl mx-auto text-center shadow-[8px_8px_0_rgba(0,0,0,0.5)]">
+          <p className="text-gray-900 text-sm md:text-base font-bold leading-relaxed" style={{ textShadow: 'none' }}>
+            <span className="text-blue-900 font-black">Tech-Exzellenz:</span> 100% Serverseitig modifiziert – Konsolen- und Mobile-Spieler müssen keinerlei Mods oder Texturen herunterladen. Die Welt wurde via Chunky im Radius von 2500 Blöcken komplett vorgeneriert für ein absolut lag-freies Erkundungserlebnis.
           </p>
         </div>
       </div>
