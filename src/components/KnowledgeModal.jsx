@@ -22,10 +22,11 @@ export default function KnowledgeModal({ isOpen, onClose, title, content, icon }
             <h2 className="text-3xl md:text-4xl text-white font-bold font-pixel tracking-wide">{title}</h2>
           </div>
           <button 
+            aria-label="Close"
             onClick={() => { playClickSound(); onClose(); }}
-            className="text-white/70 hover:text-white bg-white/5 hover:bg-white/20 border border-white/10 rounded-full w-12 h-12 flex items-center justify-center transition-all hover:rotate-90 hover:scale-110"
+            className="text-white/70 hover:text-white bg-white/5 hover:bg-white/20 border border-white/10 rounded-full w-12 h-12 flex items-center justify-center transition-all hover:rotate-90 hover:scale-110 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
           >
-            <X size={24} />
+            <X size={24} aria-hidden="true" />
           </button>
         </div>
 

@@ -1,0 +1,3 @@
+## 2024-05-18 - Icon-Only Button Accessibility Pattern
+**Learning:** Found that custom modal components (like `KnowledgeModal`) often use icon-only buttons for closing without `aria-label`s. Also, the SVG icons themselves lack `aria-hidden="true"`, meaning screen readers might not understand the button's purpose and might try to read the SVG raw. Keyboard users also need clear `focus-visible` styling when they tab to these interactive elements.
+**Action:** Always ensure icon-only interactive elements have an `aria-label` describing the action, hide the decorative icon with `aria-hidden="true"`, and add explicit focus styles like `focus-visible:ring-2 focus-visible:outline-none`.
