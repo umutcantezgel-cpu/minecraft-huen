@@ -55,7 +55,7 @@ export default function WorldSection() {
             <div className="h-1.5 w-full bg-[#555555] mb-6 border-b-[3px] border-white"></div>
             <h3 className="text-xl md:text-3xl text-blue-800 font-bold mb-4 drop-shadow-sm">Industrielle Evolution & Endgame<br/><span className="text-lg text-blue-900 opacity-80">(Slimefun 4 + Supreme Addon)</span></h3>
             <p className="text-base md:text-xl text-[#222222] font-semibold leading-relaxed">
-              Verwandelt das Survival-Gameplay in eine gigantische Tech-Simulation. Nutzt den Ingame-Guide (<span className="font-mono text-black font-bold">/sf guide</span>), um über 500 neue Items, exotische Legierungen (Carbon, Damaststahl) und Multi-Block-Maschinen freizuschalten. Baut vollautomatische Frachtnetze, Energienetze mit Solarpanels und nuklearen Reaktoren sowie ultimatives Tier-5 'Supreme'-Endgame-Equipment (OP-Werkzeuge & Rüstungen).
+              Verwandelt das Survival-Gameplay in eine gigantische Tech-Simulation. Nutzt den Ingame-Guide (<span className="font-mono text-black font-bold">/sf guide</span>), um über 500 neue Items, exotische Legierungen (Carbon, Damaststahl) und Multi-Block-Maschinen freizuschalten. Baut vollautomatische Frachtnetze, Energienetze mit Solarpanels und nuklearen Reaktoren sowie ultimatives Tier-5 &apos;Supreme&apos;-Endgame-Equipment (OP-Werkzeuge & Rüstungen).
             </p>
           </div>
         </div>

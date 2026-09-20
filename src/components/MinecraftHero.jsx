@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Play, Server, Users } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,6 +12,15 @@ export default function MinecraftHero() {
   const ctaRef = useRef(null);
   const statsRef = useRef(null);
   const cloudsRef = useRef([]);
+  const [copiedPC, setCopiedPC] = useState(false);
+  const [copiedConsole, setCopiedConsole] = useState(false);
+  const [copiedPort, setCopiedPort] = useState(false);
+
+  const handleCopy = (text, setter) => {
+    navigator.clipboard.writeText(text);
+    setter(true);
+    setTimeout(() => setter(false), 2000);
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -86,33 +95,27 @@ export default function MinecraftHero() {
           
           <div className="flex flex-col gap-2">
             <button 
-              onClick={() => {
-                navigator.clipboard.writeText('Umutcan_Emre.exaroton.me:28198');
-                alert('PC IP kopiert: Umutcan_Emre.exaroton.me:28198');
-              }}
+              onClick={() => handleCopy('Umutcan_Emre.exaroton.me:28198', setCopiedPC)}
               className="mc-btn flex items-center justify-center gap-4 px-8 py-3 text-lg font-black text-white bg-blue-600 hover:bg-blue-500" style={{ textShadow: '1px 1px 0 #000' }}
+              aria-label="Kopiere PC IP"
             >
               <Server className="w-6 h-6" />
-              PC (Java) kopieren
+              {copiedPC ? 'Kopiert! ✓' : 'PC (Java) kopieren'}
             </button>
             <div className="flex gap-2">
               <button 
-                onClick={() => {
-                  navigator.clipboard.writeText('Umutcan_Emre.exaroton.me');
-                  alert('Konsolen IP kopiert: Umutcan_Emre.exaroton.me');
-                }}
+                onClick={() => handleCopy('Umutcan_Emre.exaroton.me', setCopiedConsole)}
                 className="mc-btn flex items-center justify-center gap-2 px-4 py-3 text-sm font-black text-white flex-1" style={{ textShadow: '1px 1px 0 #000' }}
+                aria-label="Kopiere Konsole IP"
               >
-                Konsole IP
+                {copiedConsole ? 'Kopiert! ✓' : 'Konsole IP'}
               </button>
               <button 
-                onClick={() => {
-                  navigator.clipboard.writeText('28198');
-                  alert('Port kopiert: 28198');
-                }}
+                onClick={() => handleCopy('28198', setCopiedPort)}
                 className="mc-btn flex items-center justify-center gap-2 px-4 py-3 text-sm font-black text-white bg-gray-600 hover:bg-gray-500" style={{ textShadow: '1px 1px 0 #000' }}
+                aria-label="Kopiere Port"
               >
-                Port
+                {copiedPort ? 'Kopiert! ✓' : 'Port'}
               </button>
             </div>
           </div>

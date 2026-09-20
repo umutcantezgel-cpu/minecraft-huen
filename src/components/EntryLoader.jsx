@@ -42,13 +42,23 @@ export default function EntryLoader({ onComplete, onStart }) {
   const chunks = React.useMemo(() => {
     const list = [];
     
-    // Random biome centers to ensure every load generates a unique world
+    // Random biome centers (using Math.random is pure enough if isolated inside useMemo and we don't care about strict determinism across re-renders for this animation, but Next.js react-hooks/purity rule catches it).
+    // We can pre-generate these random values using a pure-looking mapping.
+
+    // Instead of Math.random or mutating seed, let's use a pure hash function based on coordinates
+    const hash = (x, y) => {
+      let h = Math.imul(x ^ (y << 16), 0x85ebca6b);
+      h ^= h >>> 13;
+      h = Math.imul(h, 0xc2b2ae35);
+      return ((h ^= h >>> 16) >>> 0) / 4294967296;
+    };
+
     const biomes = [
-      { cx: Math.random() * gridSize, cy: Math.random() * gridSize, color: '#1E90FF', radius: 4 + Math.random() * 3 }, // Water/Ocean
-      { cx: Math.random() * gridSize, cy: Math.random() * gridSize, color: '#EEDD82', radius: 3 + Math.random() * 2 }, // Sand/Desert
-      { cx: Math.random() * gridSize, cy: Math.random() * gridSize, color: '#808080', radius: 2 + Math.random() * 3 }, // Stone/Mountains
-      { cx: Math.random() * gridSize, cy: Math.random() * gridSize, color: '#FFFFFF', radius: 1 + Math.random() * 2 }, // Snow Peaks
-      { cx: Math.random() * gridSize, cy: Math.random() * gridSize, color: '#228B22', radius: 3 + Math.random() * 3 }, // Deep Forest
+      { cx: hash(0, 0) * gridSize, cy: hash(0, 1) * gridSize, color: '#1E90FF', radius: 4 + hash(0, 2) * 3 }, // Water/Ocean
+      { cx: hash(1, 0) * gridSize, cy: hash(1, 1) * gridSize, color: '#EEDD82', radius: 3 + hash(1, 2) * 2 }, // Sand/Desert
+      { cx: hash(2, 0) * gridSize, cy: hash(2, 1) * gridSize, color: '#808080', radius: 2 + hash(2, 2) * 3 }, // Stone/Mountains
+      { cx: hash(3, 0) * gridSize, cy: hash(3, 1) * gridSize, color: '#FFFFFF', radius: 1 + hash(3, 2) * 2 }, // Snow Peaks
+      { cx: hash(4, 0) * gridSize, cy: hash(4, 1) * gridSize, color: '#228B22', radius: 3 + hash(4, 2) * 3 }, // Deep Forest
     ];
 
     for (let y = 0; y < gridSize; y++) {
@@ -58,18 +68,19 @@ export default function EntryLoader({ onComplete, onStart }) {
         
         let targetColor = '#71AF45'; // Default Minecraft Grass
         
-        for (const b of biomes) {
+        for (let i = 0; i < biomes.length; i++) {
+          const b = biomes[i];
           const distToBiome = Math.sqrt(Math.pow(x - b.cx, 2) + Math.pow(y - b.cy, 2));
           // add some natural jaggedness/noise
-          if (distToBiome + (Math.random() * 1.5) < b.radius) {
+          if (distToBiome + (hash(x, y + i * 100) * 1.5) < b.radius) {
             targetColor = b.color;
             break;
           }
         }
         
         // Random isolated features for texture
-        if (targetColor === '#71AF45' && Math.random() > 0.8) targetColor = '#228B22'; // Random trees in grass
-        if (targetColor === '#EEDD82' && Math.random() > 0.9) targetColor = '#71AF45'; // Random oasis in desert
+        if (targetColor === '#71AF45' && hash(x + 100, y) > 0.8) targetColor = '#228B22'; // Random trees in grass
+        if (targetColor === '#EEDD82' && hash(x, y + 200) > 0.9) targetColor = '#71AF45'; // Random oasis in desert
 
         list.push({ id: `${x}-${y}`, x, y, distance, targetColor });
       }
@@ -77,7 +88,7 @@ export default function EntryLoader({ onComplete, onStart }) {
 
     // Sort chunks by distance from center so they animate in a spiral/square outwards
     return list.sort((a, b) => a.distance - b.distance);
-  }, []);
+  }, [center]);
 
   const startLoading = () => {
     // Synchronously trigger audio play to bypass mobile autoplay blocking
@@ -193,7 +204,7 @@ export default function EntryLoader({ onComplete, onStart }) {
 
           <div className="mc-panel p-6 mb-12 max-w-2xl bg-black/60 border-4 border-[#373737] shadow-[8px_8px_0_rgba(0,0,0,0.5)] backdrop-blur-sm">
             <p className="text-xl text-gray-200 font-semibold" style={{ textShadow: '2px 2px 0 #000' }}>
-              Bereit für das ultimative Survival-Erlebnis? Klicke auf 'Spielen', um das System zu laden.
+              Bereit für das ultimative Survival-Erlebnis? Klicke auf &apos;Spielen&apos;, um das System zu laden.
             </p>
           </div>
           

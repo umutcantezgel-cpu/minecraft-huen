@@ -41,10 +41,10 @@ export default function MinecraftFooter() {
             Ein gemütlicher privater Server für die Huen Gruppe. Kommt vorbei, wir freuen uns auf euch!
           </p>
           <div className="flex space-x-4">
-            <a href="#" className="mc-btn px-4 py-2 text-white">
+            <a href="#" className="mc-btn px-4 py-2 text-white" aria-label="Twitter">
               🐦
             </a>
-            <a href="#" className="mc-btn px-4 py-2 text-white">
+            <a href="#" className="mc-btn px-4 py-2 text-white" aria-label="YouTube">
               📺
             </a>
           </div>

@@ -118,7 +118,7 @@ export default function ConnectionGuide() {
                 <div className="w-12 h-12 shrink-0 bg-[#373737] border-4 border-[#1D1D1D] flex items-center justify-center text-xl font-bold text-yellow-400 drop-shadow-md">1</div>
                 <div>
                   <h4 className="text-xl font-bold text-white mb-1 drop-shadow-[0_2px_0_rgba(0,0,0,1)]">Minecraft starten</h4>
-                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold text-sm">Öffne den Launcher. Benötigt explizit Version <span className="text-yellow-400 font-mono">1.21.4</span>.<br/><span className="opacity-80 text-xs">(Im Launcher auf 'Installationen' {'->'} 'Neue Installation' {'->'} 'release 1.21.4' auswählen)</span>.</p>
+                  <p className="text-[#E0E0E0] drop-shadow-md font-semibold text-sm">Öffne den Launcher. Benötigt explizit Version <span className="text-yellow-400 font-mono">1.21.4</span>.<br/><span className="opacity-80 text-xs">(Im Launcher auf &apos;Installationen&apos; {'->'} &apos;Neue Installation&apos; {'->'} &apos;release 1.21.4&apos; auswählen)</span>.</p>
                 </div>
               </div>
 
