@@ -24,6 +24,8 @@ export default function KnowledgeModal({ isOpen, onClose, title, content, icon }
           <button 
             onClick={() => { playClickSound(); onClose(); }}
             className="text-white/70 hover:text-white bg-white/5 hover:bg-white/20 border border-white/10 rounded-full w-12 h-12 flex items-center justify-center transition-all hover:rotate-90 hover:scale-110"
+            aria-label="Schließen"
+            title="Schließen"
           >
             <X size={24} />
           </button>
