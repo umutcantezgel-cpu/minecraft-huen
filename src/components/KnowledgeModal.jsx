@@ -13,19 +13,23 @@ export default function KnowledgeModal({ isOpen, onClose, title, content, icon }
       <div 
         className="bg-white/10 border border-white/20 rounded-3xl w-full max-w-4xl max-h-[85vh] flex flex-col shadow-[0_30px_100px_rgba(0,0,0,0.5)] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
       >
         
         {/* Header */}
         <div className="bg-black/40 p-6 md:p-8 flex justify-between items-center border-b border-white/10 backdrop-blur-md">
           <div className="flex items-center gap-6">
-            {icon && <div className="w-12 h-12 md:w-16 md:h-16 transform scale-125 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">{icon}</div>}
-            <h2 className="text-3xl md:text-4xl text-white font-bold font-pixel tracking-wide">{title}</h2>
+            {icon && <div aria-hidden="true" className="w-12 h-12 md:w-16 md:h-16 transform scale-125 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">{icon}</div>}
+            <h2 id="modal-title" className="text-3xl md:text-4xl text-white font-bold font-pixel tracking-wide">{title}</h2>
           </div>
           <button 
             onClick={() => { playClickSound(); onClose(); }}
-            className="text-white/70 hover:text-white bg-white/5 hover:bg-white/20 border border-white/10 rounded-full w-12 h-12 flex items-center justify-center transition-all hover:rotate-90 hover:scale-110"
+            className="text-white/70 hover:text-white bg-white/5 hover:bg-white/20 border border-white/10 rounded-full w-12 h-12 flex items-center justify-center transition-all hover:rotate-90 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+            aria-label="Close"
           >
-            <X size={24} />
+            <X size={24} aria-hidden="true" />
           </button>
         </div>
 
