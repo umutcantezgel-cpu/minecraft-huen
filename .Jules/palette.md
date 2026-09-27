@@ -1,0 +1,6 @@
+## 2026-09-27 - Custom UI components accessibility constraints
+**Learning:** The project relies heavily on custom Minecraft-themed UI components (e.g., `MCButton`, `MCSlot`, `MCItem`) built with non-semantic tags (`div`, `img`) with attached `onClick` handlers. These often lack proper keyboard navigation, role definitions, and focus states.
+**Action:** Always verify that interactive elements use standard focus outlines (like `focus-visible:ring-2`), add appropriate ARIA attributes (`role="button"`, `aria-label`), and ideally ensure  and keyboard event handlers () are implemented if migrating to semantic tags isn't feasible.
+## 2026-09-27 - Custom UI components accessibility constraints
+**Learning:** The project relies heavily on custom Minecraft-themed UI components (e.g., MCButton, MCSlot, MCItem) built with non-semantic tags (div, img) with attached onClick handlers. These often lack proper keyboard navigation, role definitions, and focus states.
+**Action:** Always verify that interactive elements use standard focus outlines (like focus-visible:ring-2), add appropriate ARIA attributes (role=button, aria-label), and ideally ensure tabIndex and keyboard event handlers are implemented if migrating to semantic tags isn't feasible.
