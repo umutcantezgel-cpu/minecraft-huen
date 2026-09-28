@@ -8,51 +8,84 @@ export const MCPanel = ({ children, className = '', style }) => (
   </div>
 );
 
-export const MCItem = ({ name, size = 64, className = '', onClick }) => (
-  <img 
-    src={items[name]} 
-    alt={name}
-    width={size}
-    height={size}
-    className={`pixel-sword ${className} ${onClick ? 'cursor-pointer transition-transform hover:scale-110 active:scale-95' : ''}`}
-    onClick={() => {
-      if (onClick) {
-        playClickSound();
-        onClick();
-      }
-    }}
-    style={{ imageRendering: 'pixelated' }}
-  />
-);
-
-export const MCButton = ({ children, className = '', onClick }) => (
-  <div 
-    className={`mc-button inline-flex justify-center items-center ${className}`}
-    onClick={(e) => {
+export const MCItem = ({ name, size = 64, className = '', onClick }) => {
+  const handleClick = () => {
+    if (onClick) {
       playClickSound();
-      if(onClick) onClick(e);
-    }}
-  >
-    {children}
-  </div>
-);
+      onClick();
+    }
+  };
+  return (
+    <img
+      src={items[name]}
+      alt={name}
+      width={size}
+      height={size}
+      className={`pixel-sword ${className} ${onClick ? 'cursor-pointer transition-transform hover:scale-110 active:scale-95' : ''}`}
+      onClick={handleClick}
+      onKeyDown={(e) => {
+        if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
+      role={onClick ? 'button' : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      style={{ imageRendering: 'pixelated' }}
+    />
+  );
+};
 
-export const MCSlot = ({ children, className = '', count, onClick, selected }) => (
-  <div 
-    className={`mc-slot ${onClick ? 'interactive' : ''} ${selected ? 'selected' : ''} ${className}`}
-    onClick={() => {
-      if (onClick) {
-        playClickSound();
-        onClick();
-      }
-    }}
-  >
-    {children}
-    {count !== undefined && (
-      <span className="item-count font-bold font-pixel absolute bottom-[-4px] right-[2px] z-20 text-white text-shadow-mc">{count}</span>
-    )}
-  </div>
-);
+export const MCButton = ({ children, className = '', onClick }) => {
+  const handleClick = (e) => {
+    playClickSound();
+    if(onClick) onClick(e);
+  };
+  return (
+    <div
+      className={`mc-button inline-flex justify-center items-center ${className}`}
+      onClick={handleClick}
+      onKeyDown={(e) => {
+        if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          handleClick(e);
+        }
+      }}
+      role="button"
+      tabIndex={0}
+    >
+      {children}
+    </div>
+  );
+};
+
+export const MCSlot = ({ children, className = '', count, onClick, selected }) => {
+  const handleClick = () => {
+    if (onClick) {
+      playClickSound();
+      onClick();
+    }
+  };
+  return (
+    <div
+      className={`mc-slot ${onClick ? 'interactive' : ''} ${selected ? 'selected' : ''} ${className}`}
+      onClick={handleClick}
+      onKeyDown={(e) => {
+        if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
+      role={onClick ? 'button' : undefined}
+      tabIndex={onClick ? 0 : undefined}
+    >
+      {children}
+      {count !== undefined && (
+        <span className="item-count font-bold font-pixel absolute bottom-[-4px] right-[2px] z-20 text-white text-shadow-mc">{count}</span>
+      )}
+    </div>
+  );
+};
 
 export const MCToast = ({ children, title, icon }) => (
   <div className="mc-toast p-4 flex items-center gap-6 w-full max-w-2xl">
