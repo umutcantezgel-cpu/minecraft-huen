@@ -21,17 +21,37 @@ export const MCItem = ({ name, size = 64, className = '', onClick }) => (
         onClick();
       }
     }}
+    onKeyDown={(e) => {
+      if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        playClickSound();
+        onClick();
+      }
+    }}
+    role={onClick ? 'button' : undefined}
+    tabIndex={onClick ? 0 : undefined}
     style={{ imageRendering: 'pixelated' }}
   />
 );
 
 export const MCButton = ({ children, className = '', onClick }) => (
   <div 
-    className={`mc-button inline-flex justify-center items-center ${className}`}
+    className={`mc-button inline-flex justify-center items-center ${className} ${onClick ? 'cursor-pointer' : ''}`}
     onClick={(e) => {
-      playClickSound();
-      if(onClick) onClick(e);
+      if (onClick) {
+        playClickSound();
+        onClick(e);
+      }
     }}
+    onKeyDown={(e) => {
+      if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        playClickSound();
+        onClick(e);
+      }
+    }}
+    role={onClick ? 'button' : undefined}
+    tabIndex={onClick ? 0 : undefined}
   >
     {children}
   </div>
@@ -46,6 +66,15 @@ export const MCSlot = ({ children, className = '', count, onClick, selected }) =
         onClick();
       }
     }}
+    onKeyDown={(e) => {
+      if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        playClickSound();
+        onClick();
+      }
+    }}
+    role={onClick ? 'button' : undefined}
+    tabIndex={onClick ? 0 : undefined}
   >
     {children}
     {count !== undefined && (
