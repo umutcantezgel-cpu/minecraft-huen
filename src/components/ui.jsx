@@ -21,6 +21,15 @@ export const MCItem = ({ name, size = 64, className = '', onClick }) => (
         onClick();
       }
     }}
+    role={onClick ? 'button' : undefined}
+    tabIndex={onClick ? 0 : undefined}
+    onKeyDown={(e) => {
+      if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        playClickSound();
+        onClick();
+      }
+    }}
     style={{ imageRendering: 'pixelated' }}
   />
 );
@@ -32,6 +41,15 @@ export const MCButton = ({ children, className = '', onClick }) => (
       playClickSound();
       if(onClick) onClick(e);
     }}
+    role={onClick ? 'button' : undefined}
+    tabIndex={onClick ? 0 : undefined}
+    onKeyDown={(e) => {
+      if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        playClickSound();
+        onClick(e);
+      }
+    }}
   >
     {children}
   </div>
@@ -42,6 +60,15 @@ export const MCSlot = ({ children, className = '', count, onClick, selected }) =
     className={`mc-slot ${onClick ? 'interactive' : ''} ${selected ? 'selected' : ''} ${className}`}
     onClick={() => {
       if (onClick) {
+        playClickSound();
+        onClick();
+      }
+    }}
+    role={onClick ? 'button' : undefined}
+    tabIndex={onClick ? 0 : undefined}
+    onKeyDown={(e) => {
+      if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
         playClickSound();
         onClick();
       }
