@@ -1,0 +1,3 @@
+## 2024-10-02 - Added keyboard accessibility to custom UI components
+**Learning:** Custom UI components in this app (like `MCItem`, `MCButton`, and `MCSlot`) often use non-semantic tags (`div`, `img`) with `onClick` handlers but initially lacked essential accessibility attributes like `role="button"`, `tabIndex={0}`, and `onKeyDown` handlers. This creates a barrier for users navigating via keyboard (using Enter/Space) or assistive technologies.
+**Action:** When working with existing custom interactive components that utilize non-semantic elements, always ensure `role="button"`, `tabIndex={0}`, and `onKeyDown` (for Enter and Space keys) are implemented alongside `onClick` props to provide a fully accessible experience.
