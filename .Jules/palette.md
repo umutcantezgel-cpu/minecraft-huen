@@ -1,0 +1,3 @@
+## 2024-11-21 - [Keyboard Accessibility for Custom UI Components]
+**Learning:** In this Next.js app, custom UI components (`MCButton`, `MCSlot`, `MCItem` in `src/components/ui.jsx`) are built using non-semantic tags (`div`, `img`) rather than native interactive elements (`button`, `a`). When they accept an `onClick` prop, they do not inherently support keyboard navigation or activation.
+**Action:** Always ensure that non-semantic interactive components explicitly include `role="button"`, `tabIndex={0}`, and `onKeyDown` handlers listening for `Enter` and `Space` keys to maintain a baseline level of accessibility.
