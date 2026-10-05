@@ -1,0 +1,3 @@
+## 2025-01-26 - Keyboard Accessibility for Custom Minecraft UI Components
+**Learning:** Custom UI components in `src/components/ui.jsx` (`MCItem`, `MCButton`, `MCSlot`) rely on non-semantic tags (`div`, `img`) with `onClick` handlers but lack inherent keyboard focus or interaction. Keyboard-only and screen reader users cannot activate these elements without explicit `role`, `tabIndex`, and `onKeyDown` attributes.
+**Action:** Always conditionally spread `role="button"`, `tabIndex={0}`, and `onKeyDown` handlers for `Enter` and `Space` keys onto custom non-semantic interactive components when an `onClick` prop is provided.
