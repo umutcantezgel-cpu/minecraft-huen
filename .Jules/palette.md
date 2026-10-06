@@ -1,0 +1,3 @@
+## 2024-05-14 - Keyboard Accessibility for Non-Semantic UI Components
+**Learning:** The custom UI components in this application (such as `MCItem`, `MCButton`, and `MCSlot`) heavily rely on non-semantic HTML tags (`div`, `img`) with `onClick` handlers. This creates a pattern of missing keyboard accessibility, preventing users who rely on keyboards or screen readers from properly interacting with the interface.
+**Action:** When creating or modifying interactive UI components that use non-semantic elements with `onClick` events, always ensure `role="button"`, `tabIndex={0}`, and an `onKeyDown` handler (for "Enter" and " " space keys) are also included to maintain proper accessibility standards.
