@@ -1,0 +1,3 @@
+## 2025-02-24 - Custom Component Accessibility
+**Learning:** Custom UI components using non-semantic tags (`div`, `img`) lack basic keyboard accessibility (focusability and key event handling) by default. Without adding specific accessibility properties, interactive elements cannot be used by screen reader or keyboard-only users.
+**Action:** When creating custom components like `MCItem`, `MCButton`, or `MCSlot` with an `onClick` handler, explicitly include `role="button"`, `tabIndex={0}`, and an `onKeyDown` handler to support `Enter` and `Space` key actions to ensure accessibility parity.
