@@ -1,0 +1,3 @@
+## 2024-05-23 - Keyboard Accessibility for Non-Semantic UI Elements
+**Learning:** Custom UI components using `div` or `img` tags (like Minecraft-styled slots and buttons) need explicit accessibility attributes (`role="button"`, `tabIndex={0}`) and keyboard event handlers (`onKeyDown` for Enter/Space) to be fully usable by keyboard-only or screen reader users. The `focus-visible` utility from Tailwind is crucial for providing clear visual focus without disrupting mouse user experience.
+**Action:** Always ensure that interactive elements that cannot be built with native `<button>` tags include full keyboard accessibility support, both functionally (event handlers) and visually (focus states).

@@ -8,51 +8,87 @@ export const MCPanel = ({ children, className = '', style }) => (
   </div>
 );
 
-export const MCItem = ({ name, size = 64, className = '', onClick }) => (
-  <img 
-    src={items[name]} 
-    alt={name}
-    width={size}
-    height={size}
-    className={`pixel-sword ${className} ${onClick ? 'cursor-pointer transition-transform hover:scale-110 active:scale-95' : ''}`}
-    onClick={() => {
-      if (onClick) {
-        playClickSound();
-        onClick();
-      }
-    }}
-    style={{ imageRendering: 'pixelated' }}
-  />
-);
+export const MCItem = ({ name, size = 64, className = '', onClick }) => {
+  const isInteractive = Boolean(onClick);
+  return (
+    <img
+      src={items[name]}
+      alt={name}
+      width={size}
+      height={size}
+      className={`pixel-sword ${className} ${isInteractive ? 'cursor-pointer transition-transform hover:scale-110 active:scale-95 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none' : ''}`}
+      onClick={() => {
+        if (onClick) {
+          playClickSound();
+          onClick();
+        }
+      }}
+      role={isInteractive ? "button" : undefined}
+      tabIndex={isInteractive ? 0 : undefined}
+      onKeyDown={(e) => {
+        if (isInteractive && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          playClickSound();
+          onClick();
+        }
+      }}
+      style={{ imageRendering: 'pixelated' }}
+    />
+  );
+};
 
-export const MCButton = ({ children, className = '', onClick }) => (
-  <div 
-    className={`mc-button inline-flex justify-center items-center ${className}`}
-    onClick={(e) => {
-      playClickSound();
-      if(onClick) onClick(e);
-    }}
-  >
-    {children}
-  </div>
-);
-
-export const MCSlot = ({ children, className = '', count, onClick, selected }) => (
-  <div 
-    className={`mc-slot ${onClick ? 'interactive' : ''} ${selected ? 'selected' : ''} ${className}`}
-    onClick={() => {
-      if (onClick) {
+export const MCButton = ({ children, className = '', onClick }) => {
+  const isInteractive = Boolean(onClick);
+  return (
+    <div
+      className={`mc-button inline-flex justify-center items-center ${className} ${isInteractive ? 'focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none' : ''}`}
+      onClick={(e) => {
         playClickSound();
-        onClick();
-      }
-    }}
-  >
-    {children}
-    {count !== undefined && (
-      <span className="item-count font-bold font-pixel absolute bottom-[-4px] right-[2px] z-20 text-white text-shadow-mc">{count}</span>
-    )}
-  </div>
-);
+        if(onClick) onClick(e);
+      }}
+      role={isInteractive ? "button" : undefined}
+      tabIndex={isInteractive ? 0 : undefined}
+      onKeyDown={(e) => {
+        if (isInteractive && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          playClickSound();
+          if(onClick) onClick(e);
+        }
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
+export const MCSlot = ({ children, className = '', count, onClick, selected }) => {
+  const isInteractive = Boolean(onClick);
+  return (
+    <div
+      className={`mc-slot ${isInteractive ? 'interactive focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none' : ''} ${selected ? 'selected' : ''} ${className}`}
+      onClick={() => {
+        if (onClick) {
+          playClickSound();
+          onClick();
+        }
+      }}
+      role={isInteractive ? "button" : undefined}
+      tabIndex={isInteractive ? 0 : undefined}
+      onKeyDown={(e) => {
+        if (isInteractive && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          playClickSound();
+          onClick();
+        }
+      }}
+    >
+      {children}
+      {count !== undefined && (
+        <span className="item-count font-bold font-pixel absolute bottom-[-4px] right-[2px] z-20 text-white text-shadow-mc">{count}</span>
+      )}
+    </div>
+  );
+};
 
 export const MCToast = ({ children, title, icon }) => (
   <div className="mc-toast p-4 flex items-center gap-6 w-full max-w-2xl">
