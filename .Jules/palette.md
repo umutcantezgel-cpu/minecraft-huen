@@ -1,0 +1,3 @@
+## 2026-10-12 - Keyboard Accessibility for Non-Semantic UI Components
+**Learning:** Using non-semantic tags like `div` or `img` for interactive UI elements (e.g., buttons, slots, items) inherently lacks keyboard accessibility. They cannot be focused with the Tab key and do not trigger `onClick` events with Enter or Space keys, causing accessibility issues for users relying on keyboard navigation.
+**Action:** When creating custom interactive elements with non-semantic tags that accept an `onClick` prop, always ensure they are fully keyboard accessible by adding `role="button"`, `tabIndex={0}`, and an `onKeyDown` event handler that listens for 'Enter' or ' ' (Space) keys to trigger the corresponding click action.
