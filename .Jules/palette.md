@@ -1,0 +1,3 @@
+## 2025-02-14 - Keyboard Accessibility for Custom non-semantic components
+**Learning:** Custom UI components in `src/components/ui.jsx` (such as `MCButton`, `MCSlot`, and `MCItem`) use non-semantic tags (`div`, `img`). To make them accessible and responsive to keyboard interactions, we need to explicitly include `role="button"`, `tabIndex={0}`, and `onKeyDown` handlers for the Enter and Space keys when they have `onClick` props.
+**Action:** When creating or modifying non-semantic tags that act as buttons, always add `role="button"`, `tabIndex={0}`, and an `onKeyDown` handler to allow keyboard users to trigger them using Enter or Space. Focus visible styling should also be included for improved keyboard navigation visibility.
