@@ -1,0 +1,3 @@
+## 2024-03-24 - Custom Components Accessibility
+**Learning:** Custom UI elements (`div` and `img`) acting as buttons (`MCButton`, `MCItem`, `MCSlot`) completely drop keyboard support if not explicitly coded. Focus rings require a `tabIndex=0`, and an explicit `onKeyDown` handler that intercepts `Enter` and `Space` is necessary to match native `<button>` behavior.
+**Action:** Always add `role="button"`, `tabIndex={0}`, and an `onKeyDown` handler for `Enter`/`Space` when adding `onClick` to non-semantic elements.
