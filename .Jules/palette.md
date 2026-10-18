@@ -1,0 +1,3 @@
+## 2023-10-25 - Custom Component Keyboard Accessibility
+**Learning:** Custom UI components in this app (like `MCItem`, `MCButton`, `MCSlot`) built using non-semantic tags (`div`, `img`) with `onClick` handlers lack native keyboard support. Users relying on keyboard navigation cannot focus or trigger them, causing significant accessibility barriers.
+**Action:** When converting non-semantic elements to interactive components via `onClick`, always explicitly add `role="button"`, `tabIndex={0}`, and an `onKeyDown` handler to capture 'Enter' and 'Space' keys to ensure they are fully operable without a mouse.
