@@ -1,0 +1,3 @@
+## 2024-10-20 - Adding Keyboard Accessibility to Custom non-semantic Interactive Components
+**Learning:** Custom interactive components like `MCButton`, `MCItem`, and `MCSlot` were implemented with generic HTML elements (`div`, `img`) and `onClick` handlers but lacked keyboard accessibility.
+**Action:** When creating custom components built with non-semantic tags that perform actions on click, always explicitly add `role="button"`, `tabIndex={0}`, and an `onKeyDown` event handler to listen for 'Enter' or 'Space' keys. This ensures they can be operated by keyboard users.
