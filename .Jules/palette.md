@@ -1,0 +1,3 @@
+## 2024-03-24 - Improve keyboard accessibility for custom UI components
+**Learning:** Custom interactive components (`div` or `img` acting as buttons) frequently lack built-in keyboard accessibility. When adding `onKeyDown` handlers for Space/Enter keys, it's critical to include `e.preventDefault()` to stop the browser's default behavior of scrolling the page.
+**Action:** When creating or modifying custom UI components (like `MCButton`, `MCItem`, `MCSlot`) with `onClick` props, always explicitly include `role="button"`, `tabIndex={0}`, and an `onKeyDown` handler for 'Enter'/' ' that prevents default and triggers the click action to ensure full keyboard navigation compatibility.
