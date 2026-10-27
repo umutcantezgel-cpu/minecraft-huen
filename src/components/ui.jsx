@@ -21,16 +21,36 @@ export const MCItem = ({ name, size = 64, className = '', onClick }) => (
         onClick();
       }
     }}
+    {...(onClick ? {
+      role: "button",
+      tabIndex: 0,
+      onKeyDown: (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === ' ') e.preventDefault();
+          playClickSound();
+          onClick();
+        }
+      }
+    } : {})}
     style={{ imageRendering: 'pixelated' }}
   />
 );
 
 export const MCButton = ({ children, className = '', onClick }) => (
   <div 
+    role="button"
+    tabIndex={0}
     className={`mc-button inline-flex justify-center items-center ${className}`}
     onClick={(e) => {
       playClickSound();
       if(onClick) onClick(e);
+    }}
+    onKeyDown={(e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        if (e.key === ' ') e.preventDefault();
+        playClickSound();
+        if(onClick) onClick(e);
+      }
     }}
   >
     {children}
@@ -46,6 +66,17 @@ export const MCSlot = ({ children, className = '', count, onClick, selected }) =
         onClick();
       }
     }}
+    {...(onClick ? {
+      role: "button",
+      tabIndex: 0,
+      onKeyDown: (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === ' ') e.preventDefault();
+          playClickSound();
+          onClick();
+        }
+      }
+    } : {})}
   >
     {children}
     {count !== undefined && (
