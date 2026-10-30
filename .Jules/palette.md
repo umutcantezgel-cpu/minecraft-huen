@@ -1,0 +1,3 @@
+## 2024-05-18 - Non-semantic Component Accessibility
+**Learning:** Custom UI components built with non-semantic elements (`div`, `img`) like `MCButton` and `MCItem` require manual accessibility wiring. Specifically, they need `role="button"`, `tabIndex={0}`, and custom keyboard handlers for `Enter` and `Space` keys to replicate native button behavior, including calling `e.preventDefault()` to prevent default page scrolling when using Space.
+**Action:** Always verify keyboard accessibility on non-semantic clickable elements. Ensure proper ARIA roles, tabindex, and keyboard event handlers are applied to make them usable by keyboard and screen reader users.
