@@ -1,0 +1,3 @@
+## 2024-05-14 - Keyboard Accessibility in Custom Non-Semantic UI Components
+**Learning:** Custom UI components in `src/components/ui.jsx` (such as `MCButton`, `MCSlot`, and `MCItem`) use non-semantic tags (`div`, `img`). This breaks keyboard accessibility, as they are not implicitly focusable or triggerable via keyboard out-of-the-box.
+**Action:** When they have `onClick` props to ensure keyboard accessibility, they must explicitly include `role="button"`, `tabIndex={0}`, and `onKeyDown` handlers for Enter/Space (with `e.preventDefault()` to prevent page scrolling). Existing Tailwind utility classes (`focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none`) should be used for focus states.
