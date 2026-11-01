@@ -14,9 +14,18 @@ export const MCItem = ({ name, size = 64, className = '', onClick }) => (
     alt={name}
     width={size}
     height={size}
-    className={`pixel-sword ${className} ${onClick ? 'cursor-pointer transition-transform hover:scale-110 active:scale-95' : ''}`}
+    className={`pixel-sword ${className} ${onClick ? 'cursor-pointer transition-transform hover:scale-110 active:scale-95 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none' : ''}`}
     onClick={() => {
       if (onClick) {
+        playClickSound();
+        onClick();
+      }
+    }}
+    role={onClick ? "button" : undefined}
+    tabIndex={onClick ? 0 : undefined}
+    onKeyDown={(e) => {
+      if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
         playClickSound();
         onClick();
       }
@@ -27,10 +36,19 @@ export const MCItem = ({ name, size = 64, className = '', onClick }) => (
 
 export const MCButton = ({ children, className = '', onClick }) => (
   <div 
-    className={`mc-button inline-flex justify-center items-center ${className}`}
+    className={`mc-button inline-flex justify-center items-center focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none ${className}`}
     onClick={(e) => {
       playClickSound();
       if(onClick) onClick(e);
+    }}
+    role="button"
+    tabIndex={0}
+    onKeyDown={(e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        playClickSound();
+        if(onClick) onClick(e);
+      }
     }}
   >
     {children}
@@ -39,9 +57,18 @@ export const MCButton = ({ children, className = '', onClick }) => (
 
 export const MCSlot = ({ children, className = '', count, onClick, selected }) => (
   <div 
-    className={`mc-slot ${onClick ? 'interactive' : ''} ${selected ? 'selected' : ''} ${className}`}
+    className={`mc-slot ${onClick ? 'interactive focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none' : ''} ${selected ? 'selected' : ''} ${className}`}
     onClick={() => {
       if (onClick) {
+        playClickSound();
+        onClick();
+      }
+    }}
+    role={onClick ? "button" : undefined}
+    tabIndex={onClick ? 0 : undefined}
+    onKeyDown={(e) => {
+      if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
         playClickSound();
         onClick();
       }
