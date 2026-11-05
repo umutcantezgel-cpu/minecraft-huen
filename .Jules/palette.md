@@ -1,0 +1,3 @@
+## 2024-11-04 - Keyboard Accessibility for Custom Minecraft UI Components
+**Learning:** Custom non-semantic interactive components (`div`, `img`) used in this Minecraft UI, like `MCItem`, `MCButton`, and `MCSlot`, lack native keyboard accessibility which prevents keyboard users from navigating and triggering actions.
+**Action:** Always add `role="button"`, `tabIndex={0}`, and an `onKeyDown` handler for 'Enter' and ' ' (Space) when assigning `onClick` props to these custom components. Ensure to call `e.preventDefault()` in the keyboard handler to stop browser scrolling on Space. Provide visible focus styles utilizing existing Tailwind utilities (`focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none`).
