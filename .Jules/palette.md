@@ -1,0 +1,3 @@
+## 2025-01-20 - Keyboard Accessibility for Non-Semantic UI Components
+**Learning:** Custom interactive components in this Next.js app (`MCButton`, `MCItem`, `MCSlot`) were built using non-semantic HTML tags (`div`, `img`) with only `onClick` handlers. This completely prevented keyboard navigation and interaction for screen readers or keyboard users.
+**Action:** Always ensure that when applying `onClick` to non-semantic elements, they also receive `role="button"`, `tabIndex={0}`, and `onKeyDown` handlers for both 'Enter' and 'Space' (using `e.preventDefault()` to stop page scrolling), along with `focus-visible` styles.
