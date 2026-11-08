@@ -1,0 +1,3 @@
+## 2024-11-08 - Added keyboard accessibility to custom elements
+**Learning:** Custom non-semantic tags (like `div`, `img`) used as interactive elements in this app's UI components need explicit `role="button"`, `tabIndex={0}`, and `onKeyDown` handlers (specifically for Space and Enter) to ensure full keyboard accessibility. Without them, screen readers and keyboard navigation completely miss these crucial interactive elements like custom buttons and item slots.
+**Action:** Always ensure any interactive custom element built from a `div` or `img` receives `role="button"`, `tabIndex={0}`, an `onKeyDown` listener that triggers the `onClick` event logic on 'Enter' or ' ', and a visible focus indicator like `focus-visible:ring-2`.
