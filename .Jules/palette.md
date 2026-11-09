@@ -1,0 +1,3 @@
+## 2024-03-20 - Adding Keyboard Support to Custom Minecraft UI Components
+**Learning:** Custom UI components in this app (like `MCButton`, `MCSlot`, `MCItem`) built with non-semantic tags (`div`, `img`) and `onClick` handlers completely break keyboard navigation for users relying on Tab/Enter/Space. Setting `e.preventDefault()` on Space key presses in the `onKeyDown` handler is critical to prevent the default browser behavior of scrolling the page when interacting with these components.
+**Action:** Always add `role="button"`, `tabIndex={0}`, and an `onKeyDown` handler (listening for Enter/Space with `preventDefault`) whenever adding `onClick` to non-semantic interactive components to ensure full keyboard accessibility.
