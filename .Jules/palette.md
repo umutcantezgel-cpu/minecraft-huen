@@ -1,0 +1,3 @@
+## 2024-03-24 - Accessibility for Non-Semantic UI Components
+**Learning:** Custom interactive components like `MCItem`, `MCButton`, and `MCSlot` which use non-semantic tags (`div`, `img`) and accept `onClick` props lack native keyboard accessibility and focus states.
+**Action:** Always add `role="button"`, `tabIndex={0}`, and an `onKeyDown` handler (for Enter/Space) when adding `onClick` to non-semantic elements. Include `e.preventDefault()` in the handler to prevent page scrolling on Space press. Apply focus states using existing Tailwind utilities like `focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none`.
