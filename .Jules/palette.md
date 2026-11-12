@@ -1,0 +1,3 @@
+## 2024-05-14 - Keyboard Accessibility in Custom MC Components
+**Learning:** Custom UI components (like `MCButton`, `MCItem`, and `MCSlot` which use `div` and `img` elements) need explicit keyboard support (`role="button"`, `tabIndex={0}`, and an `onKeyDown` handler for Enter/Space) when acting as buttons. Without `e.preventDefault()` in the `onKeyDown` handler for the Space key, triggering these components causes the browser window to scroll down.
+**Action:** When adding `onClick` handlers to non-semantic interactive elements, always implement the full suite of keyboard accessibility attributes, particularly including `e.preventDefault()` on Space key presses to stop unintended page scrolling.
